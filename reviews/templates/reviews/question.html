@@ -1,0 +1,17 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+	<p>{{ question }}</p>
+
+	<ul>
+		{% for answer in answers %}
+			<li>
+				{{ answer }}
+			</li>
+		{% empty %}
+			<li>Пока нет ответов на этот вопрос.</li>
+		{% endfor %}
+	</ul>
+
+
+{% endblock content %}
