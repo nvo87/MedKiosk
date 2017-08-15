@@ -8,5 +8,6 @@ urlpatterns = [
 	url(r'^$', views.index, name='index'),
 	#Страница со списком вопросов
 	url(r'^questions/$', views.questions, name='questions'),
+	#Страница отдельного ответа
 	url(r'^questions/(?P<question_id>\d+)/$', views.question, name='question'),
 ]

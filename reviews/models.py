@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Question(models.Model):
@@ -30,16 +31,17 @@ class Patient(models.Model):
 class Answer(models.Model):
 	""" Ответы от пользователей на конкретный вопрос """
 	question_id = models.ForeignKey(Question) # id вопроса, к которому дан сам ответ, т.е. оценка и коммент.
+	patient_id = models.ForeignKey(Patient) # id пользователя, который ответил на вопрос
 	rating = models.PositiveSmallIntegerField() # оценка от 1 до 10, которую поставил пациент
 	comment = models.TextField()	# комментарий к оценке на вопрос
-	date_added = models.DateTimeField(auto_now_add=True) # дата ответа
-	patient_id = models.ForeignKey(Patient) # id пользователя, который ответил на вопрос
+	date_added = models.DateTimeField(default=timezone.now) # дата ответа
+	
 	def __str__(self):
 		""" Возвращает строковое представление модели """
 		if (self.comment):
-			return str(self.rating) + " баллов" + " - " + self.comment
+			return str(self.rating) + " баллов - " + str(self.comment)
 		else:
-			return str(self.rating)
+			return str(self.rating) + " баллов"
 
 	class Meta:
 		verbose_name 		= "Ответ"

@@ -6,7 +6,7 @@
 	<ul>
 		{% for answer in answers %}
 			<li>
-				{{ answer }}
+				{{ answer }} - {{answer.patient_id}} ({{ answer.patient_id.phone }})
 			</li>
 		{% empty %}
 			<li>Пока нет ответов на этот вопрос.</li>
