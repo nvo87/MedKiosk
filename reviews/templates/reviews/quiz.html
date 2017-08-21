@@ -1,0 +1,14 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+    <h2>Пожалуйста, ответьте на несколько вопросов</h2>
+	<p>{{ question }}</p>
+	<form action="{% url 'reviews:quiz' question.id %}" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" name="submit" value="Ответить">
+	</form>
+
+	<div><a href="{% url 'reviews:index' %}">На главную</a></div>
+
+{% endblock content %}

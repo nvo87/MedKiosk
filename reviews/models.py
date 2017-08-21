@@ -1,48 +1,63 @@
 from django.db import models
 from django.utils import timezone
 
+
 # Create your models here.
 class Question(models.Model):
-	""" Вопросы, которые задаются пользователю"""
-	text = models.CharField(max_length=300) # текст вопроса
-	sort_order = models.PositiveSmallIntegerField() # каким по счету выводится этот вопрос
-	def __str__(self):
-		""" Возвращает строковое представление модели """
-		return self.text
+    """ Вопросы, которые задаются пользователю"""
+    # текст вопроса каким по счету выводится этот вопрос
+    text = models.CharField(max_length=300)  
+    sort_order = models.PositiveSmallIntegerField()
 
-	class Meta:
-		verbose_name 		= "Вопрос"
-		verbose_name_plural = "Вопросы"
+    def __str__(self):
+        """ Возвращает строковое представление модели """
+        return self.text
+
+    class Meta:
+        verbose_name = "Вопрос"
+        verbose_name_plural = "Вопросы"
+
 
 class Patient(models.Model):
-	""" Пациент (пользователь терминала), отвечавший на вопросы """
-	full_name = models.CharField(max_length=100)
-	phone = models.CharField(max_length=15)
-	age = models.PositiveSmallIntegerField()
-	review = models.TextField() # итоговый отзыв, который оставил пользователь
-	def __str__(self):
-		""" Возвращает строковое представление модели """
-		return self.full_name + ", " + str(self.age) + " лет"
+    """ Пациент (пользователь терминала), отвечавший на вопросы """
+    full_name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15)
+    age = models.PositiveSmallIntegerField()
+    # итоговый отзыв, который оставил пользователь
+    review = models.TextField()
 
-	class Meta:
-		verbose_name 		= "Пациент"
-		verbose_name_plural = "Пациенты"
+    def __str__(self):
+        """ Возвращает строковое представление модели """
+        return self.full_name + ", " + str(self.age) + " лет"
+
+    class Meta:
+        verbose_name = "Пациент"
+        verbose_name_plural = "Пациенты"
+
 
 class Answer(models.Model):
-	""" Ответы от пользователей на конкретный вопрос """
-	question_id = models.ForeignKey(Question) # id вопроса, к которому дан сам ответ, т.е. оценка и коммент.
-	patient_id = models.ForeignKey(Patient) # id пользователя, который ответил на вопрос
-	rating = models.PositiveSmallIntegerField() # оценка от 1 до 10, которую поставил пациент
-	comment = models.TextField()	# комментарий к оценке на вопрос
-	date_added = models.DateTimeField(default=timezone.now) # дата ответа
-	
-	def __str__(self):
-		""" Возвращает строковое представление модели """
-		if (self.comment):
-			return str(self.rating) + " баллов - " + str(self.comment)
-		else:
-			return str(self.rating) + " баллов"
+    """ Ответы от пользователей на конкретный вопрос """
+    # id вопроса, к которому дан сам ответ, т.е. оценка и коммент.
+    question_id = models.ForeignKey(Question)  
+    # id пользователя, который ответил на вопрос
+    patient_id = models.ForeignKey(Patient)
+    # варианты ответов (шкала от 1 до 10)
+    rating_choises = [(i, i) for i in range(1, 10)]
+    # оценка от 1 до 10, которую поставил пациент
+    rating = models.PositiveSmallIntegerField(
+        choices=rating_choises, default=5)
+    # комментарий к оценке на вопрос
+    comment = models.TextField()
+    date_added = models.DateTimeField(
+        default=timezone.now)  # дата ответа
 
-	class Meta:
-		verbose_name 		= "Ответ"
-		verbose_name_plural = "Ответы"
+    def __str__(self):
+        """ Возвращает строковое представление модели """
+        if (self.comment):
+            return str(self.rating) + " баллов - " + str(self.comment)
+        else:
+            return str(self.rating) + " баллов"
+
+    class Meta:
+        verbose_name = "Ответ"
+        verbose_name_plural = "Ответы"

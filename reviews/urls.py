@@ -4,10 +4,13 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-	#Домашняя страница
-	url(r'^$', views.index, name='index'),
-	#Страница со списком вопросов
-	url(r'^questions/$', views.questions, name='questions'),
-	#Страница отдельного ответа
-	url(r'^questions/(?P<question_id>\d+)/$', views.question, name='question'),
+    # Домашняя страница
+    url(r'^$', views.index, name='index'),
+    # Страница со списком вопросов
+    url(r'^questions/$', views.questions, name='questions'),
+    # Страница отдельного ответа
+    url(r'^questions/(?P<question_id>\d+)/$',
+        views.question, name='question'),
+    # Страница-опросник (форма ответа на вопрос с конкретным id)
+    url(r'^quiz/(?P<question_id>\d+)/$', views.quiz, name='quiz'),
 ]
