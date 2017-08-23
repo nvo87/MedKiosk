@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse #определяет URL по за
 # from django.http import HttpResponse # для ответа на запрос напрямую из views.py
 
 from .models import Question, Answer, Patient
-from .forms import QuizForm
+from .forms import AnswerForm
 
 # Create your views here.
 
@@ -40,10 +40,10 @@ def quiz(request, question_id=2):
 
     if 'POST' != request.method:
         #Данные не отправлялись, создается пустая форма.
-        form = QuizForm()
+        form = AnswerForm()
     else:
         #Отправлены данные POST, обработать данные.
-        form = QuizForm(data=request.POST)
+        form = AnswerForm(data=request.POST)
         if form.is_valid():
             new_entry = form.save(commit=False)
             new_entry.question_id = question
