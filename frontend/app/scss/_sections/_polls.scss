@@ -1,0 +1,143 @@
+.poll-form{
+    color: $font-color-light;
+    padding-top: 60px;
+}
+
+.poll-form__inner{
+
+}
+
+.form-row{
+    margin-bottom: 45px;
+}
+
+.question__help{
+    font-size: 1.6em;
+    margin-bottom: 75px;
+    text-align: center;
+}
+
+.question__inner{
+
+}
+
+.question__submit{
+    text-align: center;
+}
+
+.question__submit-btn{
+    letter-spacing: 1px;
+    border-radius: 15px;
+    background-color: rgba(59, 76, 108, 0.9);
+    padding: 15px 0px;
+    color: $font-color-light;
+    font-size: 1.4em;
+    text-decoration:none;
+    display: block;
+    text-transform:uppercase;
+
+    &:hover{
+        background-color: rgba(59, 76, 108, 1);
+    }
+}
+.question__rating{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.rating__list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.rating__title{
+    flex-grow: 0;
+    text-align: center;
+}
+.rating__list{
+    flex: 1;
+}
+
+.rating__title, .comment__label{
+    font-size: 1.2em;
+}
+
+.rating__title{
+    padding: 0px 15px;
+    padding-left: 0;
+}
+
+.rating__item{
+    margin: 0 12px;
+}
+
+.rating__label{
+    color: $font-color-light;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius:50% 50%;
+    background-color: rgba(59, 76, 108, 0.7);
+    text-align: center;
+    font-size:1.3em;
+    padding-top: 4px;
+    padding-right: 1px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgba(59, 76, 108, 1);
+    }
+}
+
+.rating__radio:checked + .rating__label{
+    border-color: #fff;
+    border:1px #fff solid;
+}
+
+
+.comment__label{
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.question__input, .comment__textarea{
+    width: 100%;
+    min-height: 60px;
+    height: 200px;
+    color: $font-color-light;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #00BCD4;
+    background-color: rgba(59, 76, 108, 0.7);
+    padding: 10px;
+    outline: none;
+    // opacity: 0.8;
+
+    &:focus{
+        border-color: #fff;
+        border-style:solid;
+    }
+
+    &::placeholder{
+        color:$font-color-light;
+    }
+}
+
+.question__input{
+    min-height:5px;
+    height: auto;
+    border-radius:8px;
+}
+
+.question__input-list{
+    // padding-top: 25px;
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
+}
+
+.input__wrap{
+    display: inline-block;
+    flex: 0 1 29.5%;
+}

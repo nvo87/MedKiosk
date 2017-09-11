@@ -1,5 +1,55 @@
-<p>
-	<a href="{% url 'reviews:index' %}">Главная</a>
-	<a href="{% url 'reviews:questions' %}">Список вопросов (для статиста)</a>
-</p>
-{% block content %}{% endblock content %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" href="{% static "css/fonts.css" %}">
+        <link rel="stylesheet" href="{% static "css/main.css" %}">
+        <!-- bower:css-->
+        <!-- <link rel="stylesheet" href="bower/equalizecss/dist/css/equalize.css" /> -->
+        <!-- endbower -->
+        <title>Главная страница</title>
+        <script src="bower/jquery/dist/jquery.js"></script>
+        <script src="js/fadeinscreen.js"></script>
+    </head>
+    <body>
+
+        <div class="main-wrapper filter">
+            <header class="header">
+                <div class="logo">
+                    <a href="/" class="logo__link">
+                        <img src="img/logo.png" alt="" class="logo__img">
+                    </a>
+                </div>
+                <div class="main-title">Городская клиническая больница №15 им. О.М. Филатова</div>
+            </header>
+            <section class="main-content">
+                <div class="container">
+                {% block content %}
+
+                {% endblock content %}
+            </section>
+            <footer class="footer">
+                    <div class="footer__content">
+                        <div class="footer__info">Справочная стационара: 8 (495) 375-71-83</div>
+                        <div class="footer__info">Справочная КДЦ: 8 (495) 375-71-83</div>
+                        <div class="footer__info">Справочная род. дома: 8 (495) 375-71-83</div>
+                    </div>
+            </footer>
+        </div>
+        <!-- bower:js-->
+
+        <!-- endbower  -->
+        <script src="js/script.js"></script>
+    </body>
+</html>

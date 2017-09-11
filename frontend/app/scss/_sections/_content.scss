@@ -1,0 +1,104 @@
+.big-menu{
+	@extend .center-in-flexbox;
+}
+
+.main-content {
+	/* flex: 1; would be enough but it looks bad in IE */
+	flex: 1 0 auto;
+	display: flex;
+	height: 75vh; // дает прокрутку только в этой секции, а не на весь экран, т.е. футер и хедер какбы фиксированы
+	overflow-y: auto;
+	margin-bottom: 1px;
+	padding-top: 15px;
+}
+
+.big-menu__btn{
+	padding: 15px;
+	width: 60%;
+	border-radius: 15px;
+	margin-bottom: 30px;
+	@extend .custom-btn;
+	font-size: 1.8em;
+}
+
+.title{
+	font-size: 1.6em;
+	text-align: center;
+	color: $font-color-light;
+	margin-bottom: 15px;
+
+	.title-min{
+		font-size: 65%;
+		margin-top: -5px;
+		display: block;
+		margin-bottom: 5px;
+	}
+}
+
+.map{
+	width: 100%;
+	@extend .center-in-flexbox;
+}
+
+.map__wrapper{
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.map__img{
+	@extend .img-responsive;
+	width: 100%;
+}
+
+.map__btn-zone{
+	position: absolute;
+	display: block;
+	height: 9%; // 45px;
+	min-width: 50px;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.btn-zone--glav{
+	top: 22%; // 	top: 115px;
+	left: 11%; // 	left: 100px;
+	width: 24%; // 	width: 200px;
+}
+.btn-zone--kdc{
+	top: 5%;
+	left: 46%;
+	width: 42%;
+}
+.btn-zone--rod{
+	top: 68%;
+    left: 1%;
+    width: 23%;
+}
+.btn-zone--terap{
+	top: 84%;
+	left: 27%;
+	width: 33%;
+}
+.btn-zone--panatom{
+	top: 43%;
+    left: 45%;
+    width: 43%;
+}
+
+.about{
+	color: $font-color-light;
+	margin-bottom: 45px;
+}
+
+.about p{
+	margin-bottom:10px;
+}
+
+.about img{
+	margin: 15px;
+}
+
+.about li{
+	margin-left: 45px;
+	list-style-type:circle;
+}

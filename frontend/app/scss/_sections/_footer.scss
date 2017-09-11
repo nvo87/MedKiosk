@@ -1,0 +1,12 @@
+.footer{
+	background-color: $btn-color;
+	padding: $main-wrapper-padding;
+	opacity: 0.8;
+}
+.footer__content{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	color: $font-color-light;
+	padding: 10px 0;
+}

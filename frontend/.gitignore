@@ -1,0 +1,7 @@
+node_modules
+app/bower
+.DS_Store
+.sass-cache
+.idea
+sftp-config.json
+sftpconfig.json

@@ -1,0 +1,15 @@
+{
+  "name": "simple-html-scss",
+  "author": "nvo87",
+  "devDependencies": {
+    "browser-sync": "^2.10.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.5.0",
+    "gulp-if": "^2.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.1.1",
+    "gulp.spritesmith": "^6.2.1",
+    "wiredep": "^3.0.0"
+  }
+}

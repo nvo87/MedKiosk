@@ -1,0 +1,32 @@
+.header{
+    padding: $main-wrapper-padding;
+    z-index: 10;
+}
+
+
+.filter--dark .header{
+    box-shadow: -15px 20px 35px rgb(6, 6, 6);
+}
+
+.logo{
+  position: absolute;
+  top: 15px;
+  left: 6%;
+  width: 65px;
+}
+
+.logo__link{
+  display: block
+}
+
+.logo__img{
+  @extend .img-responsive;
+}
+
+
+.main-title{
+  text-align: center;
+  padding: 35px 0px 20px;
+  color: $font-color-light;
+  font-size: 2em;
+}
