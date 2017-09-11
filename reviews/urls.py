@@ -13,4 +13,8 @@ urlpatterns = [
         views.question, name='question'),
     # Страница-опросник (форма ответа на вопрос с конкретным id)
     url(r'^quiz/(?P<question_id>\d+)/$', views.quiz, name='quiz'),
+    # Страница со всеми вопросами и формой ответов на них
+    url(r'^polls/$', views.polls, name='polls'),
+    # Страница благодарности
+    url(r'^success/$', views.success, name='success'),
 ]

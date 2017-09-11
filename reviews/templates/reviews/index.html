@@ -8,7 +8,8 @@
 <div>
 	<a href="#">О нас</a>
 	<a href="#">Найти отделение</a>
-	<a href="{% url 'reviews:quiz' question_id=2 %}">Оставить отзыв</a>
+    {# <a href="{% url 'reviews:quiz' question_id=2 %}">Оставить отзыв</a> #}
+	<a href="{% url 'reviews:polls' %}">Оставить отзыв</a>
 </div>
 
 {% endblock content %}

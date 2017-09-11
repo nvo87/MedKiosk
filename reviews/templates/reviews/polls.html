@@ -1,0 +1,55 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+    <h2>Пожалуйста, ответьте на несколько вопросов</h2>
+    <form action="{% url 'reviews:success' %}" method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+            <h3>{{ question.text }}</h3>
+            <div>Ваша оценка:</div>
+            <ul data-question-id="{{ question.id }}">
+                {% for choice in answer.rating_choices %}
+                    <li>
+                        {% if choice.0 == 5 %}
+                            <input type="radio" checked="checked" name="rating_q{{ question.id }}" id="choice-{{ question.id }}-{{ choice.0 }}" value="{{ choice.0 }}">
+                        {% else %}
+                            <input type="radio" name="rating_q{{ question.id }}" id="choice-{{ question.id }}-{{ choice.0 }}" value="{{ choice.0 }}">
+                        {% endif %}
+                        <label for="choice-{{ question.id }}-{{ choice.0 }}">{{ choice.0 }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div>
+                <div>
+                    <label for="comment_q{{ question.id }}">Ваш комментарий:</label>
+                </div>
+                <textarea name="comment_q{{ question.id }}" id="comment_q{{ question.id }}" cols="60" rows="10"></textarea>
+            </div>
+            <input type="hidden" name="q{{ question.id }}" value="{{ question.id }}">
+        {% endfor %}
+        <h3>Оставьте ваш отзыв</h3>
+        <div>
+            <label for="patient_name">Ваше имя:</label>
+            <input type="text" name="p_name" id="patient_name">
+        </div>
+        <div>
+            <label for="patient_phone">Телефон для связи:</label>
+            <input type="text" name="p_phone" id="patient_phone">
+        </div>
+        <div>
+            <label for="patient_age">Ваш возраст:</label>
+            <input type="text" name="p_age" id="patient_age">
+        </div>
+        <div>
+            <label for="patient_comment">Ваш отзыв:</label>
+            <textarea name="p_review" id="patient_review" cols="60" rows="10"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Отправить" />
+        </div>
+
+    </form>
+
+    <div><a href="{% url 'reviews:index' %}">На главную</a></div>
+
+{% endblock content %}

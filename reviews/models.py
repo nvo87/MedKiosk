@@ -42,10 +42,10 @@ class Answer(models.Model):
     # id пользователя, который ответил на вопрос
     patient_id = models.ForeignKey(Patient)
     # варианты ответов (шкала от 1 до 10)
-    rating_choises = [(i, i) for i in range(1, 10)]
+    rating_choices = [(i, i) for i in range(1, 11)]
     # оценка от 1 до 10, которую поставил пациент
     rating = models.PositiveSmallIntegerField(
-        choices=rating_choises, default=5)
+        choices=rating_choices, default=5)
     # комментарий к оценке на вопрос
     comment = models.TextField()
     date_added = models.DateTimeField(
