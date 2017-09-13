@@ -1,0 +1,21 @@
+/* --------- mixins --------- */
+@import "_common/mixins";
+
+/* --------- adjustment --------- */
+
+@import "_common/_normalize";
+@import "_common/_adjustment";
+
+/* --------- sprites --------- */
+@import "_common/_sprite";
+/* --------- sections --------- */
+
+ @import "_sections/header";
+ @import "_sections/content";
+ @import "_sections/reviews";
+ @import "_sections/footer";
+
+@import "_common/_my-classes";
+
+
+

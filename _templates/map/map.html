@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="map">
+        <div class="title">Выберите ваш корпус
+            <span class="title-min">(нажмите на подсказку над корпусом)</span>
+        </div>
+        <div class="map__wrapper">
+            <img class="map__img" src="{% static "img/map.png" %}" alt="Интерактивная карта расположения корпусов больницы №15">
+            <a href="#" class="map__btn-zone btn-zone--glav"></a>
+            <a href="#" class="map__btn-zone btn-zone--kdc"></a>
+            <a href="#" class="map__btn-zone btn-zone--rod"></a>
+            <a href="#" class="map__btn-zone btn-zone--terap"></a>
+            <a href="#" class="map__btn-zone btn-zone--panatom"></a>
+        </div>
+    </div>
+
+{% endblock content %}

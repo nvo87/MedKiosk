@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Мои приложения
-    'reviews'  # приложение для работы с отзывами
+    'reviews',  # приложение для работы с отзывами
+    'about',     # приложение с информацией о больнице
+    'map',       # приложение с картой больницы и поиском отделения
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'medkiosk.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['_templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,7 +124,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "frontend/app/"),
-    '/var/www/static/',
+    # os.path.join(BASE_DIR, "_static"),
+    os.path.join(BASE_DIR, "_frontend/app/"),
 ]
