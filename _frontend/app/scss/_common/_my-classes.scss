@@ -4,7 +4,20 @@
 .js-visible{
 	display: block;
 }
-
+/* Переопределение размеров вирт.клавиатуры */
+.ui-keyboard-button{
+	height: 3em;
+	min-width: 4em;
+}
+.ui-keyboard-space{
+	width: 15em;
+}
+.ui-keyboard-space span, .ui-keyboard-empty span {
+    font: inherit;
+    text-shadow: none;
+    color: #454545;
+}
+/* ---------------- */
 .img-responsive{
 	max-width:100%;
 	height:auto;
