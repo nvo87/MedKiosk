@@ -38,9 +38,9 @@ class Patient(models.Model):
 class Answer(models.Model):
     """ Ответы от пользователей на конкретный вопрос """
     # id вопроса, к которому дан сам ответ, т.е. оценка и коммент.
-    question_id = models.ForeignKey(Question)  
+    question = models.ForeignKey(Question)  
     # id пользователя, который ответил на вопрос
-    patient_id = models.ForeignKey(Patient)
+    patient = models.ForeignKey(Patient)
     # варианты ответов (шкала от 1 до 10)
     rating_choices = [(i, i) for i in range(1, 11)]
     # оценка от 1 до 10, которую поставил пациент

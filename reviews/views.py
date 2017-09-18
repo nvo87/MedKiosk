@@ -46,7 +46,7 @@ def success(request):
             rating = int(form['rating_'+question_id_item])
             comment = form['comment_'+question_id_item]
 
-            new_answer = Answer(question_id=question, patient_id=new_patient, rating=rating, comment=comment)
+            new_answer = Answer(question=question, patient=new_patient, rating=rating, comment=comment)
             new_answer.save()
         
         context = {'result':questions_id_list}
