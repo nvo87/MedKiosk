@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     # Мои приложения
-    'reviews',  # приложение для работы с отзывами
+    'reviews',   # приложение для работы с отзывами
     'about',     # приложение с информацией о больнице
     'map',       # приложение с картой больницы и поиском отделения
+    'manager',    # приложение для сотрудника больницы для работы ответами
+    'restapi',    # доступ к базе вопросов и ответов через restAPI
 ]
 
 MIDDLEWARE = [

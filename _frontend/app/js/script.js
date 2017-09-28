@@ -51,4 +51,28 @@ jQuery(window).ready(function($) {
 
     QuestionFormCarousel.init();
 
+    $.ajax({
+        url: 'restapi/answers-to-question/1/',
+        type: "GET",
+        dataType: "json",
+        success: function(response){
+            console.log(response);
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+
+    $.ajax({
+        url: 'http://localhost:8000/restapi/answers-to-question/1/',
+        type: "GET",
+        dataType: "application/json",
+        success: function(response){
+            console.log(response);
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+
 });
