@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from reviews.models import Question, Answer, Patient
-from .serializers import QuestionSerializer, AnswerSerializer
+from .serializers import QuestionSerializer, AnswerSerializer, PatientSerializer
 from django.http import Http404
 
 
@@ -71,3 +71,11 @@ class AnswersByQuestionId(APIView):
         answers = question.answer_set.all()
         serializer = AnswerSerializer(answers, many=True)
         return Response(serializer.data)        
+
+
+class PatientList(APIView):
+
+    def get(self, request):
+        patients = Patient.objects.all()
+        serializer = PatientSerializer(patients, many=True)
+        return Response(serializer.data)

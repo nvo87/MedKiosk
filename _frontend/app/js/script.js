@@ -10,8 +10,8 @@ jQuery(window).ready(function($) {
         
         var
             pollForm = $('#pollForm');
-            questionWrapClass = '.question__inner';
-            questionScreens = pollForm.find(questionWrapClass);
+            questionWrapClass = '.question__inner';   // обертка для одного вопроса
+            questionScreens = pollForm.find(questionWrapClass);  // все обертки вопросов (экраны с вопросами)
             nextQuestionBtnClass = '.js-nextQuestBtn';
             textOnNextQuestBtn = '.rating-mark'
             nextQuestionBtn = pollForm.find(nextQuestionBtnClass);
@@ -50,29 +50,5 @@ jQuery(window).ready(function($) {
     }());
 
     QuestionFormCarousel.init();
-
-    $.ajax({
-        url: 'restapi/answers-to-question/1/',
-        type: "GET",
-        dataType: "json",
-        success: function(response){
-            console.log(response);
-        },
-        error: function(error){
-            console.log(error);
-        }
-    });
-
-    $.ajax({
-        url: 'http://localhost:8000/restapi/answers-to-question/1/',
-        type: "GET",
-        dataType: "application/json",
-        success: function(response){
-            console.log(response);
-        },
-        error: function(error){
-            console.log(error);
-        }
-    });
 
 });

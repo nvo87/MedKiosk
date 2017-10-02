@@ -75,3 +75,42 @@ h1 {
     display: block;
     max-width: 600px;
 }
+.main-wrapper{
+  padding: 0 15px;
+}
+.reviews-list{
+  max-height: 270px;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar-button { 
+background-repeat:no-repeat; 
+width:4px; 
+height:0px 
+} 
+
+::-webkit-scrollbar-track { 
+/* background-color:rgba(50, 46, 50, 0.5); */
+box-shadow:0px 0px 3px #000 inset; 
+border-radius: 5px; 
+} 
+
+::-webkit-scrollbar-thumb { 
+-webkit-border-radius: 5px; 
+border-radius: 5px; 
+background-color: rgba(0,0,0,.125);
+box-shadow:0px 1px 1px #fff inset; 
+background-position:center; 
+background-repeat:no-repeat; 
+} 
+
+::-webkit-resizer{ 
+background-image:url(''); 
+background-repeat:no-repeat; 
+width:4px; 
+height:0px 
+} 
+
+::-webkit-scrollbar{ 
+width: 7px; 
+}

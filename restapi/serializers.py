@@ -14,6 +14,12 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        # fields = ('text')
         fields = '__all__'
         depth = 1
+
+
+class PatientSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Patient
+        fields = '__all__'
