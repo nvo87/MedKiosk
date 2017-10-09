@@ -71,6 +71,10 @@ h1 {
 
 
 /* My classes */
+#QuestionsModuleBlock, #AnswersModuleBlock, #ChartModuleBlock{
+  display: none;
+}
+
 .chart{
     display: block;
     max-width: 600px;
@@ -79,9 +83,36 @@ h1 {
   padding: 0 15px;
 }
 .reviews-list{
-  max-height: 270px;
+  /* max-height: 270px; */
   overflow-y: auto;
 }
+
+.review-title{
+  color: #212529;
+}
+.review-title.active{
+  font-weight: bold;
+}
+
+.review-content{
+  display: none;  
+}
+.review-title-date{
+  font-size: 0.8rem;
+}
+
+.reviews-list.js-show-details .review-title{
+    font-weight: bold;
+  }
+.reviews-list.js-show-details  .review-content{
+    display: block;
+  }
+
+
+.folding-btn{
+  font-size: 0.8rem;
+}
+
 
 ::-webkit-scrollbar-button { 
 background-repeat:no-repeat; 

@@ -2,12 +2,17 @@ var QuestionsModule = (function () {
     // JSON-данные полученные через АЯКС с сервера при загрузке приложения. Сами переменные будут заполнены при инициализации модуля в функции _init().
     var QUESTIONS = [];
     // привязка к элементам верстки блока с вопросами
+    var $questionsModuleBlock = $('#QuestionsModuleBlock');
     var $questionLink = $('.question-link'); // кнопки с вопросом
     var activeClass = 'active'; // название класса для подсветки активной кнопки
     var currentQuestionId = 0; // id вопроса по которому на данный момент показаны данные
+    var FADEIN_TIME;
 
-    function _init(questionsJSON) {
+    function _init(questionsJSON, SETTINGS) {
         QUESTIONS = questionsJSON;
+        FADEIN_TIME = SETTINGS.FADEIN_TIME; 
+
+        _showQuestionsModuleBlock();
         _setUpListeners();
     }
 
@@ -34,6 +39,9 @@ var QuestionsModule = (function () {
         _toggleActiveClass($this);
         currentQuestionId = questionId;
 
+        AnswersModule.showAnswersModule();
+        ChartModule.showChartModule();
+
         // Отсеиваем ответы для выбранного вопроса и разбиваем оценки в ответах на диапазоны.
         answersToQuestion = AnswersModule.filterAnswersByQuestionId(questionId);
         ratings = AnswersModule.sortRatingsByRanges(answersToQuestion);
@@ -51,6 +59,10 @@ var QuestionsModule = (function () {
         AnswersModule.showAnswersData(answersToQuestion);
 
 
+    }
+
+    function _showQuestionsModuleBlock(){
+        $questionsModuleBlock.fadeIn(FADEIN_TIME);
     }
 
     return {

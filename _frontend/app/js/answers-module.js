@@ -1,12 +1,45 @@
 var AnswersModule = (function () {
     var ANSWERS = [];  
+    var $answersModuleBlock = $('#AnswersModuleBlock'); // весь модуль ответов целиком, с ответами, кнопками и т.д.
     var $reviewsBlock = $('#reviewsList'); // блок куда выводятся ответы
     var reviewsTplScript = $('#reviewsTpl'); // срипт шаблона для вывода ответов
-    var RANGES;
+    var $foldCommentsBlock = $('#foldingBlock'); // кнопки свернуть/развернуть все ответы
+    var $foldBtns = $foldCommentsBlock.children('.folding-btn');
+    var reviewsItemClass = '.reviews-item';
+    var reviewTitleClass = '.review-title';
+    var reviewContentClass = '.review-content';
+
+    var RANGES, FADEIN_TIME;
 
     function _init(answersJSON, SETTINGS) {
         ANSWERS = answersJSON;
         RANGES = SETTINGS.RANGES; // диапазоны для сортировки ответов
+        FADEIN_TIME = SETTINGS.FADEIN_TIME; 
+
+        _setUpListeners();
+    }
+
+    function _setUpListeners() {
+        $foldBtns.on('click', _foldComments);
+        $reviewsBlock.on('click', reviewTitleClass , _foldComment);
+    }
+
+    function _foldComments(e){
+        e.preventDefault();
+
+        var textFold = 'Свернуть все';
+        var textUnfold = 'Развернуть все';
+        $reviewsBlock.toggleClass('js-show-details');
+    }
+
+    function _foldComment(e){
+        e.preventDefault();
+        var $this = $(this);
+        var $reviewsItem = $this.parents(reviewsItemClass);
+        var $reviewContent = $reviewsItem.find(reviewContentClass);
+
+        $this.toggleClass('active');
+        $reviewContent.fadeToggle(FADEIN_TIME);
     }
 
     function _filterByQuestionId(question_id, answers){
@@ -52,6 +85,19 @@ var AnswersModule = (function () {
     }
 
     function _generateHandlebarsTpl(handlebarsScriptId){
+        //  format an ISO date using Moment.js
+        //  http://momentjs.com/
+        //  moment syntax example: moment(Date("2011-07-18T15:50:52")).format("MMMM YYYY")
+        //  usage: {{dateFormat creation_date format="MMMM YYYY"}}
+        Handlebars.registerHelper('dateFormat', function(context, block) {
+          if (window.moment) {
+            var f = block.hash.format || "MMM Do, YYYY";
+            return moment(context).format(f);
+          }else{
+            return context;   //  moment plugin not available. return data as is.
+          };
+        });
+
         // из скрипта вставленного в html создаем конечный шаблон
         // replace(/[\u200B]/g, '') - это костыль, чтобы убрать &#8203, которые генерируется первым элементом списка и из-за этого делает лишний отступ в верстке. см.ZERO WIDTH SPACE проблема
         var templateScript = handlebarsScriptId.html().replace(/[\u200B]/g, '');
@@ -68,12 +114,17 @@ var AnswersModule = (function () {
         _renderHandlebarsTpl(answersData, tpl, $reviewsBlock);
     }
 
+    function _showAnswersModuleBlock(){
+        $answersModuleBlock.fadeIn(FADEIN_TIME);
+    }
+
     return {
         init: _init,
         filterAnswersByQuestionId: _filterByQuestionId,
         filterAnswersByRatingRange: _filterByRatingRange,
         sortRatingsByRanges: _sortRatingsByRanges,
         showAnswersData: _showAnswersData,
+        showAnswersModule: _showAnswersModuleBlock
     }
 
 }());

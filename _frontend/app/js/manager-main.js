@@ -18,7 +18,9 @@ jQuery(document).ready(function($) {
                     0: [0,3], 
                     1: [4,7], 
                     2: [8,10]
-                }
+                },
+                // время плавных переходов и исчезновений информации
+                FADEIN_TIME: 200
         }
 
         console.log(questionsJSON);
@@ -27,7 +29,7 @@ jQuery(document).ready(function($) {
 
         ChartModule.init(SETTINGS);
         AnswersModule.init(answersJSON, SETTINGS);
-        QuestionsModule.init(questionsJSON);
+        QuestionsModule.init(questionsJSON, SETTINGS);
         // PatientsModule.init();
 
     }, function(e){console.log(e.status, e.statusText)});

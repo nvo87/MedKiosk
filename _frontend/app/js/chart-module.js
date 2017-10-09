@@ -1,21 +1,24 @@
 var ChartModule = (function () {
-    var chartBlock = $("#StatsChart");
+    var $chartModuleBlock = $("#ChartModuleBlock");
+    var $chartBlock = $("#StatsChart");
     var myChart;
-    var RANGES;
+    var RANGES, FADEIN_TIME;
 
     function _init(SETTINGS) {
-        _setUpListeners();
-
-        if (chartBlock.length > 0) {
-            RANGES = SETTINGS.RANGES; // диапазоны сортировки ответов
-            myChart = new Chart(chartBlock, _setChartParams());
+        FADEIN_TIME = SETTINGS.FADEIN_TIME;
+        RANGES = SETTINGS.RANGES; // диапазоны сортировки ответов
+        
+        if ($chartBlock.length > 0) {
+            myChart = new Chart($chartBlock, _setChartParams());
         } else {
             return false;
         }
+
+        _setUpListeners();
     }
 
     function _setUpListeners() {
-        chartBlock.on('click', _showRangeAnswsersData);
+        $chartBlock.on('click', _showRangeAnswsersData);
     }
 
     function _setChartParams(dataRanges) {
@@ -103,10 +106,15 @@ var ChartModule = (function () {
         myChart.data.datasets[0].data = dataArray;
     }
 
+    function _showChartModuleBlock(){
+        $chartModuleBlock.fadeIn(FADEIN_TIME);
+    }
+
     return {
         init: _init,
         setDataSet: _setDataSet,
-        update: _updateChart
+        update: _updateChart,
+        showChartModule: _showChartModuleBlock
     }
 
 }());
