@@ -4,29 +4,29 @@
 {% block content %}
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Dashboard</a>
+    <a class="navbar-brand d-print-none" href="#">Сводка результатов работы инфокиоска</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Settings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
-            </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+<!--         <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" href="/manager">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Settings</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Help</a>
+    </li>
+</ul> -->
+<!--         <form class="form-inline mt-2 mt-md-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form> -->
     </div>
 </nav>
 <div class="container-fluid">
@@ -45,17 +45,18 @@
         <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
             <div class="main-wrapper">
                 <div class="row justify-content-between">
-                    <h1>Статистика</h1>
+                    <h1 class="d-print-none">Статистика</h1>
+                    <h3 id="questionHeader" class="d-print-block d-none"></h3>
                     <div class="btns-wrapper">
-                        <button type="button" class="btn btn-primary">Экспорт в CSV</button>
-                        <button type="button" class="btn btn-secondary">Распечатать</button>
+                        <a href="{% url 'manager:csv_export' %}" class="btn btn-primary d-print-none">Экспорт в XLS</a>
+                        <a href="#" id="printBtn" class="btn btn-secondary hidden-print d-print-none js-disableLink">Распечатать</a>
                     </div>
                 </div>
                 <section class="row placeholders">
                     <div class="col-12 col-sm-12">
                         <div id="ChartModuleBlock">
                             <h2 class="text-center">График</h2>
-                            <div class="row">
+                            <div class="row  align-items-center">
                                 <div class="col-8 col-sm-8 col-lg-6 placeholder">
                                         <div class="chart-wrapper">
                                             <canvas id="StatsChart" class="chart"></canvas>
@@ -64,16 +65,16 @@
                                 <div class="col-4 col-sm-4 col-lg-4 placeholder">
                                     <div class="chart-info-row">
                                         <div class="chart-info-key">Всего ответивших:</div>
-                                        <div class="chart-info-value"></div>
+                                        <div class="chart-info-value" id="answersAmount"></div>
                                     </div>
                                     <div class="chart-info-row">
-                                        <div class="chart-info-key">Средний возраст ответивших:</div>
-                                        <div class="chart-info-value"></div>
+                                        <div class="chart-info-key">Средняя оценка:</div>
+                                        <div class="chart-info-value" id="averageRating"></div>
                                     </div>
-                                    <div class="chart-info-row">
-                                        <div class="chart-info-key">Средняя оценка ответивших:</div>
-                                        <div class="chart-info-value"></div>
-                                    </div>
+                                <!--                                     <div class="chart-info-row">
+                                    <div class="chart-info-key">Средний возраст ответивших:</div>
+                                    <div class="chart-info-value" id="averageAgeField"></div>
+                                </div> -->
                                 </div>
                             </div>
                         </div>

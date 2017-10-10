@@ -75,6 +75,12 @@ h1 {
   display: none;
 }
 
+.js-disableLink{
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.4;
+}
+
 .chart{
     display: block;
     max-width: 600px;
@@ -93,9 +99,13 @@ h1 {
 .review-title.active{
   font-weight: bold;
 }
-
+.review-value{
+  font-style: italic;
+}
 .review-content{
-  display: none;  
+  display: none; 
+  padding-left: 1.5rem; 
+  font-size: 0.9rem;
 }
 .review-title-date{
   font-size: 0.8rem;
@@ -108,9 +118,25 @@ h1 {
     display: block;
   }
 
-
 .folding-btn{
   font-size: 0.8rem;
+}
+
+.chart-info-row{
+  margin-bottom: 2rem;
+}
+
+.chart-info-key{
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.chart-info-value{
+  font-size: 1.4rem;
+  color: blue;
+  font-weight: bold;
+  text-align: center;
 }
 
 

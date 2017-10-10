@@ -28,6 +28,14 @@ var QuestionsModule = (function () {
         return currentQuestionId;
     }
 
+    function _getCurrentQuestionText(){
+        for (item in QUESTIONS) {
+            if (QUESTIONS[item]['id'] === currentQuestionId) {
+                return QUESTIONS[item]['text'];
+            }
+        }
+    }
+
     function _showQuestionData(e) {
         e.preventDefault();
         var $this = $(this);
@@ -57,7 +65,9 @@ var QuestionsModule = (function () {
 
         // Рендерим список людей давших ответы
         AnswersModule.showAnswersData(answersToQuestion);
+        AnswersModule.showStats(answersToQuestion);
 
+        PrintModule.enablePrintBtn();
 
     }
 
@@ -67,7 +77,8 @@ var QuestionsModule = (function () {
 
     return {
         init: _init,
-        getCurrentQuestionId: _getCurrentQuestionId
+        getCurrentQuestionId: _getCurrentQuestionId,
+        getCurrentQuestionText: _getCurrentQuestionText
     }
 
 }());

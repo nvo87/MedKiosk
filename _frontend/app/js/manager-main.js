@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
         ChartModule.init(SETTINGS);
         AnswersModule.init(answersJSON, SETTINGS);
         QuestionsModule.init(questionsJSON, SETTINGS);
-        // PatientsModule.init();
+        PrintModule.init();
 
     }, function(e){console.log(e.status, e.statusText)});
 

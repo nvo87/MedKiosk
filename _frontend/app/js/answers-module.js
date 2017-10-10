@@ -8,6 +8,9 @@ var AnswersModule = (function () {
     var reviewsItemClass = '.reviews-item';
     var reviewTitleClass = '.review-title';
     var reviewContentClass = '.review-content';
+    var $answersAmountField = $('#answersAmount');
+    var $averageAgeField = $('#averageAge');
+    var $averageRatingField = $('#averageRating');
 
     var RANGES, FADEIN_TIME;
 
@@ -99,7 +102,7 @@ var AnswersModule = (function () {
         });
 
         // из скрипта вставленного в html создаем конечный шаблон
-        // replace(/[\u200B]/g, '') - это костыль, чтобы убрать &#8203, которые генерируется первым элементом списка и из-за этого делает лишний отступ в верстке. см.ZERO WIDTH SPACE проблема
+        // replace(/[\u200B]/g, '') - это костыль, чтобы убрать текстовую ноду &#8203, которая генерируется первым элементом списка и из-за этого делает лишний отступ в верстке. см.ZERO WIDTH SPACE проблема
         var templateScript = handlebarsScriptId.html().replace(/[\u200B]/g, '');
         return Handlebars.compile(templateScript);
     }
@@ -114,6 +117,34 @@ var AnswersModule = (function () {
         _renderHandlebarsTpl(answersData, tpl, $reviewsBlock);
     }
 
+    function _showStats(answers){
+        var averageAge = _getAverageAge(answers).toFixed(1);
+        var averageRating = _getAverageRating(answers).toFixed(1);
+
+        $answersAmountField.html(answers.length);
+        $averageRatingField.html(averageRating);
+    }
+
+    function _getAverageAge(answers){
+        var totalAge = 0;
+        var age;
+        for (item in answers) {
+            age = answers[item]['patient']['age'];
+            totalAge = totalAge + age;
+        }
+        return totalAge/answers.length;
+    }
+
+    function _getAverageRating(answers){
+        var totalRating = 0;
+        var rating;
+        for (item in answers) {
+            rating = answers[item]['rating'];
+            totalRating = totalRating + rating;
+        }
+        return totalRating/answers.length;
+    }
+
     function _showAnswersModuleBlock(){
         $answersModuleBlock.fadeIn(FADEIN_TIME);
     }
@@ -124,7 +155,8 @@ var AnswersModule = (function () {
         filterAnswersByRatingRange: _filterByRatingRange,
         sortRatingsByRanges: _sortRatingsByRanges,
         showAnswersData: _showAnswersData,
-        showAnswersModule: _showAnswersModuleBlock
+        showAnswersModule: _showAnswersModuleBlock,
+        showStats: _showStats
     }
 
 }());

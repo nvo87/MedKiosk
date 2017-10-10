@@ -3,6 +3,16 @@ var ChartModule = (function () {
     var $chartBlock = $("#StatsChart");
     var myChart;
     var RANGES, FADEIN_TIME;
+    var defaultBackgroundColor= [
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 206, 86, 0.3)'
+                ];
+    var ActiveBackgroundColor= [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ];
 
     function _init(SETTINGS) {
         FADEIN_TIME = SETTINGS.FADEIN_TIME;
@@ -23,6 +33,7 @@ var ChartModule = (function () {
 
     function _setChartParams(dataRanges) {
         dataRanges = dataRanges || [0,0,0];
+
         return {
             type: 'bar',
             data: {
@@ -35,11 +46,7 @@ var ChartModule = (function () {
                 datasets: [{
                     label: 'Кол-во оценок',
                     data: dataRanges,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                    ],
+                    backgroundColor: defaultBackgroundColor,
                     borderColor: [
                         'rgba(255,99,132,1)',
                         'rgba(54, 162, 235, 1)',
@@ -59,7 +66,8 @@ var ChartModule = (function () {
                             min: 0
                         }
                     }]
-                }
+                },
+                tooltips: {enabled:true}
             }
         }
     }
@@ -79,11 +87,33 @@ var ChartModule = (function () {
                 value: value
             }
         }
+        return false;
+    }
+
+    function _highlightActiveBar(event){
+        var activePoints = myChart.getElementsAtEvent(event);
+
+        myChart.data.datasets[0].backgroundColor = defaultBackgroundColor;
+        myChart.update();
+
+        var NewBackgroundColor = defaultBackgroundColor.slice(); // .slice() - копирует массив, а не передает по ссылке
+
+        if (activePoints[0]) {
+            var idx = activePoints[0]['_index'];
+            NewBackgroundColor[idx] = ActiveBackgroundColor[idx];
+            myChart.data.datasets[0].backgroundColor = NewBackgroundColor;
+            myChart.update();
+        }
     }
 
     function _showRangeAnswsersData(event) {
         // информация о клике по диаграмме
-        var clickPoint = _getClickValues(event); 
+        _highlightActiveBar(event);
+
+        var clickPoint = _getClickValues(event);
+
+        if (!clickPoint) {return false}
+
         var range = { 
             // Мин. и макс. значение диапазона, на котором кликнули.
             min: clickPoint.range[0], 
@@ -96,6 +126,8 @@ var ChartModule = (function () {
         var answersInRange = AnswersModule.filterAnswersByRatingRange(range.min, range.max, answersToQuestion);
 
         AnswersModule.showAnswersData(answersInRange);
+        AnswersModule.showStats(answersInRange);
+        
     }
 
     function _updateChart() {
@@ -104,6 +136,7 @@ var ChartModule = (function () {
 
     function _setDataSet(dataArray) {
         myChart.data.datasets[0].data = dataArray;
+        myChart.data.datasets[0].backgroundColor = defaultBackgroundColor;
     }
 
     function _showChartModuleBlock(){
