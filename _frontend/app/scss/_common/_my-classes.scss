@@ -4,7 +4,13 @@
 .js-visible{
 	display: block;
 }
-
+.js-fade-out{
+    opacity: 0;
+}
+.js-fade-in{
+    opacity: 1;
+    transition: opacity 0.3s;
+}
 .img-responsive{
 	max-width:100%;
 	height:auto;

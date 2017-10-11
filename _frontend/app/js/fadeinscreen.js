@@ -1,17 +1,17 @@
-// $(document).ready(function() {
-// 	var $fadeTarget = $('.main-content .container'); 
+$(document).ready(function() {
+	var $fadeTarget = $('#mainContainer'); // на что применяется эффект плавного появления
 
-//    $fadeTarget.css("display", "none"); /** body (здесь и далее) означает, что эффект применяется ко всей странице. Можно изменить на идентификаторы любых элементов (#content, .comments и т.д.) */
+   $fadeTarget.css("display", "none"); 
 
-//    $fadeTarget.fadeIn(300); /** время появления в миллисекундах */
+   $fadeTarget.fadeIn(100); /** время появления в миллисекундах */
  
-//    $("a").click(function(event){ /** a.fade означает, что данное решение будет работать только при нажатии на ссылки с классом (class) "fade" (можно изменить на свой) */
-// 	   event.preventDefault();
-// 	   linkLocation = this.href;
-// 	   $fadeTarget.fadeOut(200, redirectPage); /** время изчезания в миллисекундах */
-//    });
+   $("a.js-fade").click(function(event){ 
+	   event.preventDefault();
+	   linkLocation = this.href;
+	   $fadeTarget.fadeOut(100, redirectPage); /** время изчезания в миллисекундах */
+   });
 
-//    function redirectPage() {
-// 	   window.location = linkLocation;
-//    }
-// });
+   function redirectPage() {
+	   window.location = linkLocation;
+   }
+});
