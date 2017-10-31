@@ -1,0 +1,32 @@
+{% extends "base-manager.html" %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+
+<div class="container form-signin-container">
+    <div class="row form-signin-row justify-content-center">
+      <div class="col-6 align-self-center ">
+          <form class="form-signin" method="post" action="{% url "manager:login" %}">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Авторизация</h2>
+            <label for="{{ form.username.id_for_label }}" class="sr-only">Email address</label>
+            {% render_field form.username class="form-control" placeholder=form.username.label %}
+            <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label>
+            {% render_field form.password class="form-control" placeholder=form.password.label %}
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Войти</button>
+            <input type="hidden" name="next" value="{% url "manager:main" %}">
+          </form>
+          {% if form.errors %}
+              <div class="form-signin-errors">
+                <p>Логин или пароль не совпадают.</p>
+              </div>
+          {% endif %}
+      </div>
+      <div class="footer-title">Городская клиническая больница №15 им. О.М. Филатова</div>
+    </div>
+</div> <!-- /container -->
+
+{% endblock content %}

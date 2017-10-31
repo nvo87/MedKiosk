@@ -1,19 +1,29 @@
 import xlwt
 
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.shortcuts import render
 # получение объекта из БД или возврат 404 ошибки
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 from reviews.models import Question, Answer
 
-
+@login_required
 def main(request):
     ''' Стартовая страница панели менеджера со статистикой работы киоска '''
     questions = Question.objects.all()
     context = {'questions': questions, }
     return render(request, 'manager/main.html', context)
 
+def logout_view(request):
+    """ Завершаем сеанс работы с модулем статистики"""
+    logout(request)
+    return HttpResponseRedirect(reverse('manager:login'))
+
+@login_required
 def csv_export(request):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="stat.xls"'

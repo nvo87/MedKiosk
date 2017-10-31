@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Мои настройки
+LOGIN_URL = '/manager/login/'
 
 # Application definition
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'widget_tweaks',
     # Мои приложения
     'reviews',   # приложение для работы с отзывами
     'about',     # приложение с информацией о больнице
