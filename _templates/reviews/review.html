@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="poll-form">
+        <div class="poll-form__inner">
+            <form action="{% url 'reviews:success' %}" method="post" id="pollForm">
+            {% csrf_token %}
+                <div class="question">
+                {% for question in questions %}
+                    <div class="question__inner{% if forloop.counter == 1 %} js-visible{% endif %}">
+                        <div class="question__title">{{ question.text }}</div>
+                        <div class="question__fields">
+                            <div class="form-row">
+                                <div class="question__rating">
+                                    <div class="rating__title">Поставьте Вашу оценку:</div>
+                                    <div class="rating__list">
+                                    {% for choice in answer.rating_choices %}
+                                        <div class="rating__item">
+                                            <input type="radio" class="rating__radio" {% if choice.0 == 5 %}checked="checked"{% endif %} name="rating_q{{ question.id }}" id="choice-{{ question.id }}-{{ choice.0 }}" value="{{ choice.0 }}" hidden="hidden">
+                                            <label for="choice-{{ question.id }}-{{ choice.0 }}" class="rating__label">{{ choice.0 }}</label>
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="question__comment">
+                                    <textarea class="comment__textarea js-keyboard" name="comment_q{{ question.id }}" id="comment_q{{ question.id }}" placeholder="Оставьте комментарий к оценке (необязательно)"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="question__submit">
+                                    <a href="#" class="question__submit-btn js-nextQuestBtn">Подтвердить оценку -<span class="rating-mark">5</span></a>
+                                </div>
+                            </div>
+                            <input type="hidden" name="q{{ question.id }}" value="{{ question.id }}">
+                        </div>
+                    </div>
+                {% endfor %}
+                    <div class="question__inner" id="mainReview">
+                        <div class="question__title">Пожалуйста, оставьте ваш отзыв.</div>
+                        <div class="question__fields">
+                            <div class="form-row">
+                                <div class="question__input-list">
+                                    <div class="input__wrap">
+                                        <input type="text" class="question__input js-keyboard" name="p_name" id="patient_name" required="required" placeholder="Ваше имя">
+                                    </div>
+                                    <div class="input__wrap">
+                                        <input type="text" class="question__input js-keyboard" name="p_phone" id="patient_phone" required="required" placeholder="Контактный телефон">
+                                    </div>
+                                    <div class="input__wrap">
+                                        <input type="text" class="question__input js-keyboard" name="p_age" id="patient_age" required="required" placeholder="Ваш возраст">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="question__textarea-wrap">
+                                    <textarea class="comment__textarea js-keyboard" name="p_review" id="patient_review" placeholder="Оставьте Ваш отзыв"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="question__submit">
+                                <button type="submit" href="#" class="question__submit-btn">Отправить ваш отзыв</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
