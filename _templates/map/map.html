@@ -9,11 +9,11 @@
         </div>
         <div class="map__wrapper">
             <img class="map__img" src="{% static "img/map2.jpg" %}" alt="Интерактивная карта расположения корпусов больницы №15">
-            <a href="#" class="map__btn-zone btn-zone--glav"></a>
-            <a href="#" class="map__btn-zone btn-zone--kdc"></a>
-            <a href="#" class="map__btn-zone btn-zone--rod"></a>
-            <a href="#" class="map__btn-zone btn-zone--terap"></a>
-            <a href="#" class="map__btn-zone btn-zone--panatom"></a>
+            <a href="{% url 'map:main_building' %}" class="map__btn-zone btn-zone--glav">Главный корпус</a>
+            {# <a href="#" class="map__btn-zone btn-zone--kdc"></a> #}
+            {# <a href="#" class="map__btn-zone btn-zone--rod"></a> #}
+            <a href="{% url 'map:therap_building' %}" class="map__btn-zone btn-zone--terap">Терапевтический корпус</a>
+            {# <a href="#" class="map__btn-zone btn-zone--panatom"></a> #}
         </div>
     </div>
 

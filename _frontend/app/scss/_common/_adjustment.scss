@@ -12,6 +12,7 @@ html {
 	width:100%;
 	height: 100%;
 	font-size: 100.00%;
+    // -webkit-user-select: none;
 }
 
 body {
@@ -22,7 +23,7 @@ body {
 	width:100%;
 	height:100% !important;
 	background: #f4f4f4;
-	background: url(../img/CA2P0129_crop.JPG) center center no-repeat;
+	background: url(../img/bg_crop2.JPG) center center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 }

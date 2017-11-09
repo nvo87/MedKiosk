@@ -1,0 +1,454 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="floor-table">
+        <div class="title">Выберите ваше отделение 
+            {# <span class="title-min">(нажмите на строку в таблице)</span> #}
+        </div>
+        <div class="floor-table__wrapper">
+            <table class="floor-table__table">
+                <tr class="floor-table__row">
+                    <th class="floor-table__header">Левое крыло</th>
+                    <th class="floor-table__header floor-table__header--stage">Центральный <br> лифт</th>
+                    <th class="floor-table__header">Правое крыло</th>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Проктологическое Отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">12</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Отделение Гнойной Хирургии</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Кардиологическое отделение, АРО №2</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">11</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Офтальмологическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Нейрохирургическое Отделение <br> Отделение сосудистой хирургии</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">10</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Офтальмологическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Гинекологическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">9</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Отделение Реконструктивной хирургии</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Хирургическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">8</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Хирургическое отделение, АРО №3</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Внебюджетное отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">7</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Хирургическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Кардиохирургическое отделение, АРО №4</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">6</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Хирургическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Кардиологическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">5</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Закрыт, Ремонт</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Кардиологическое Отделение,
+АРО №6
+</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">4</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Травматологическое отделение</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">АРО №9, АРО №20</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">3</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Помещения лечебного назначения</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">АРО №3</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">2</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">АРО №2, Операционный Блок</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Приемное Отделение, Отделение Физиотерапии,
+Отделение Эндоскопии, 
+Отделение Рассеянного Склероза</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">1</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Администрация</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="floor-table__row">
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">МРТ, КТ, Лазерная Микрохирургия Глаза</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="floor-table__col floor-table__col--stage">Цоколь</td>
+                    <td class="floor-table__col">
+                        <a href="#" class="floor-table__link">
+                            <div class="col-content__col-name">Производственные помещения</div>
+                            <div class="floor-table__col-content">
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Зав. отделения: </span>
+                                    <span class="col-content__value">Иванов Иван Иванович</span>
+                                </div>
+                                <div class="col-content__item">
+                                    <span class="col-content__key">Часы посещения: </span>
+                                    <span class="col-content__value">с 10:00 до 18:00</span>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock content %}

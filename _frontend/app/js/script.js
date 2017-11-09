@@ -1,5 +1,37 @@
 jQuery(window).ready(function($) {
 
+    (function () { 
+        /* скроллинг экрана с помощью зажатой кнопки мыши */
+
+        var scrollContainer = mainContent // или window. Тогда в методе drag использовать не scrollLeft, scrollTop, а scrollX, scrollY
+        var dragHandler = {
+            lastClientY: 0,
+            start: function (e) {
+                if (e.button == 0) {
+                    window.addEventListener('mousemove', dragHandler.drag);
+                    dragHandler.lastClientY = e.clientY;
+                    console.log(dragHandler.lastClientY);
+                    e.preventDefault();
+                }
+            },
+            end: function (e) {
+                if (e.button == 0) {
+                    window.removeEventListener('mousemove', dragHandler.drag);
+                }
+            },
+            drag: function (e) {
+                var delta = e.clientY - dragHandler.lastClientY;
+                scrollContainer.scrollTo(scrollContainer.scrollLeft, scrollContainer.scrollTop - delta);
+                dragHandler.lastClientY = e.clientY;
+                e.preventDefault();
+            }
+        };
+        document.body.addEventListener('mousedown', dragHandler.start);
+        document.body.addEventListener('mouseup', dragHandler.end);
+
+
+    }());
+
     var QuestionFormCarousel = (function () {
 
         /* 
@@ -48,8 +80,41 @@ jQuery(window).ready(function($) {
         }
 
     }());
-
     QuestionFormCarousel.init();
+
+
+    var FloorTableAccordionModule = (function () {       
+        var
+            $colItem = $('.floor-table__link');
+
+        function _init() {
+            _setUpListeners();
+        }
+
+        function _setUpListeners() {
+            $colItem.on('click', _toggleContent);
+        }
+
+        function _toggleContent(e){
+            e.preventDefault();
+            
+            $this = $(this);
+
+            $table = $this.closest('.floor-table__table');
+            $colItems = $table.find('.floor-table__link');
+            $colItems.removeClass('js-content-visible');
+            $this.addClass('js-content-visible');
+        }
+
+
+        return {
+            init: _init
+        }
+
+    }());
+    FloorTableAccordionModule.init();
+
+
 
     $(function() {
 
