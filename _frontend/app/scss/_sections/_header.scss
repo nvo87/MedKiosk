@@ -23,10 +23,25 @@
   @extend .img-responsive;
 }
 
-
+.header__title{
+  text-align: center;
+}
 .main-title{
   text-align: center;
   padding: 35px 0px 20px;
   color: $font-color-light;
-  font-size: 2em;
+  font-size: 2rem;
+  display: inline-block;
+}
+.sub-title{
+  @include clearfix; 
+  color:$font-color-light;
+  font-size: 1.1rem;
+  .sub-title__left{
+    float: left;
+  }
+  .sub-title__right{
+    float: right;
+    font-style: italic;
+  }
 }

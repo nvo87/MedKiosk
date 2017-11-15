@@ -6,7 +6,7 @@
 	/* flex: 1; would be enough but it looks bad in IE */
 	flex: 1 0 auto;
 	display: flex;
-	height: 75vh; // дает прокрутку только в этой секции, а не на весь экран, т.е. футер и хедер какбы фиксированы
+	height: 51vh; // дает прокрутку только в этой секции, а не на весь экран, т.е. футер и хедер какбы фиксированы
 	overflow-y: auto;
 	margin-bottom: 1px;
 	padding-top: 15px;
@@ -34,7 +34,6 @@
 		margin-bottom: 5px;
 	}
 }
-
 .map{
 	width: 100%;
 	@extend .center-in-flexbox;
