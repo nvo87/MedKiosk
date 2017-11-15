@@ -1,37 +1,62 @@
-/* Данный вариант алгоритма позаимствован у http://usrbb.ru/ */
+jQuery(document).ready(function($) {
+  if (window.location.pathname != "/") {
+    RedirectModule.init();
+  }
+});
 
-var c=0;
-           var t;
-           var timer_is_on=0;
 
-           function timedCount(){
-               
-               
-               if (c>60) {
-            //     makemeoffline();
-                    setTimeout(function(){
-                        window.location.href="/";                     
-                    }, 200);
-               }else{
-                   c=c+1;
-                    t=setTimeout("timedCount()",1000);
-               }
-           }
+var RedirectModule = (function () {
+    var c = 0;
+    var cMax = 60; // макс. время неактивности, в сек.
+    var t;
+    var timer_is_on=0;
 
-           function doTimer() {
-               if (!timer_is_on) {
-                  timer_is_on=1;
-                   timedCount();
-               }
-           }
+    function _init() {
+        doTimer();
+        _setUpListeners();
+    }
 
-           function stopCount(){
-               clearTimeout(t);
-               timer_is_on=0;
-           }
-           function resetCount (){
-               clearTimeout(t);
-               timer_is_on=0;
-               c=0;
-               doTimer();
-           } 
+    function _setUpListeners() {
+      $(document).mousemove(function(){
+        resetCount();
+      });
+
+      $(document).mousedown(function(){
+        resetCount();
+      });
+    }
+
+    function timedCount(){
+        if (c>cMax) {
+             setTimeout(function(){
+                 window.location.href="/";                     
+             }, 200);
+        }else{
+            c=c+1;
+            t=setTimeout(timedCount,1000);
+        }
+    }
+
+    function doTimer() {
+        if (!timer_is_on) {
+           timer_is_on=1;
+            timedCount();
+        }
+    }
+
+    function stopCount(){
+        clearTimeout(t);
+        timer_is_on=0;
+    }
+    function resetCount (){
+        clearTimeout(t);
+        timer_is_on=0;
+        c=0;
+        doTimer();
+    } 
+
+    return {
+        init: _init
+    }
+
+}());

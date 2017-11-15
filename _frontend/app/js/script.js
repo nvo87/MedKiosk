@@ -1,18 +1,4 @@
 jQuery(window).ready(function($) {
-
-
-            doTimer();
-
-           $(document).mousemove(function(){
-            resetCount();
-            
-           });
-
-            $(document).mousedown(function(){
-            resetCount();
-            
-           });
-
     (function () { 
         /* скроллинг экрана с помощью зажатой кнопки мыши */
 
