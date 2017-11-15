@@ -1,38 +1,37 @@
-var inactivityModule = (function () {
-    
-    var timeOut;
-    var inactivityTime = 1000 * 60 * 2 // последняя цифра - минуты
+/* Данный вариант алгоритма позаимствован у http://usrbb.ru/ */
 
-    function _init() {
-        if (window.location.pathname !== "/"){
-            _setUpListeners();
-        }
-    }
+var c=0;
+           var t;
+           var timer_is_on=0;
 
-    function _setUpListeners() {
-        $(window).on('load', startTimer);
-        $(window).on('mousedown', reset);
-        $(window).on('keypress', reset);
-        $(window).on('scroll', reset);
-    }
+           function timedCount(){
+               
+               
+               if (c>60) {
+            //     makemeoffline();
+                    setTimeout(function(){
+                        window.location.href="/";                     
+                    }, 200);
+               }else{
+                   c=c+1;
+                    t=setTimeout("timedCount()",1000);
+               }
+           }
 
-    function reset() {
-        window.clearTimeout(timeOut);
-        timeOut = window.setTimeout( "redir()" , inactivityTime );
-    }
+           function doTimer() {
+               if (!timer_is_on) {
+                  timer_is_on=1;
+                   timedCount();
+               }
+           }
 
-    function redir() {
-        window.location = "/";
-    }
-
-    function startTimer(){
-        setTimeout(redir , inactivityTime );
-    }
-
-    return {
-        init: _init
-    }
-
-}());
-
-inactivityModule.init();
+           function stopCount(){
+               clearTimeout(t);
+               timer_is_on=0;
+           }
+           function resetCount (){
+               clearTimeout(t);
+               timer_is_on=0;
+               c=0;
+               doTimer();
+           } 
