@@ -5,18 +5,27 @@ from .models import Question, Answer, Patient
 
 # Create your views here.
 
-def reviews(request):
+def review(request):
     """ Страница вывода всех вопросов и формы ответа на них """
     questions = Question.objects.all()
     temp_answer = Answer()
 
     context = {'questions':questions, 'answer':temp_answer,}
-    return render(request, 'reviews/reviews.html', context)
+    return render(request, 'reviews/review.html', context)
+
+def poll(request):
+    """ Страница вывода всех вопросов и формы ответа на них """
+    questions = Question.objects.all()
+    temp_answer = Answer()
+
+    context = {'questions':questions, 'answer':temp_answer,}
+    return render(request, 'reviews/poll.html', context)
 
 def success(request):
     """ Благодарность за ответ и обработка полученных данных """
     
-    # Из формы ответы на вопрос для конкретного ответа приходят в значениях q{{question.id}}.  Для перебора по всем таким именам, функция формирует список [q1, q2, q10,...]
+    # Ответы на вопрос для конкретного ответа приходят в значениях q{{question.id}}.  Для перебора по всем таким именам, функция формирует список [q1, q2, q10,...]
+    # Для сопоставления ответов с конкретными вопросами, используются id вопроса. 
     def get_formatted_id_list(query_set_object, format_str=''):
         formatted_id_list = []
         for item in query_set_object:
@@ -40,7 +49,7 @@ def success(request):
         new_patient.save()
 
         for question_id_item in questions_id_list:
-            # из hidden-поля для соответсвуюещго вопроса получаем значение id
+            # из hidden-поля для соответсвуюещго вопроса получаем значение id вопроса
             question_id = int(form[question_id_item])
             question = Question.objects.get(id=question_id)
             rating = int(form['rating_'+question_id_item])

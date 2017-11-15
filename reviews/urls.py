@@ -5,7 +5,9 @@ from . import views
 
 urlpatterns = [
     # Страница со всеми вопросами и формой ответов на них
-    url(r'^$', views.reviews, name='reviews'),
+    url(r'^review/$', views.review, name='review'),
+    # Страница со всеми вопросами и формой ответов на них
+    url(r'^poll/$', views.poll, name='poll'),
     # Страница благодарности и сохранения результата опроса
     url(r'^success/$', views.success, name='success'),
 ]
