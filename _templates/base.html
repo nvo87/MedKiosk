@@ -28,7 +28,7 @@
                         <img src="{% static "/img/logo.png" %}" alt="Городская клиническая больница №15 им. О.М. Филатова" class="logo__img">
                     </a>
                 </div>
-                <div class="container">
+                <div class="container {% if request.get_full_path != "/" %} device-hidden{% endif %}">
                     <div class="header__title">
                         <div class="main-title">
                             <div>Городская клиническая больница №15 им. О.М. Филатова</div>
@@ -47,7 +47,7 @@
 
                 {% endblock content %}
             </section>
-            <footer class="footer">
+            <footer class="footer device-hidden">
                     <div class="footer__content">
                         <div class="footer__info">Справочная стационара: 8 (495) 375-71-83</div>
                         <div class="footer__info">Справочная КДЦ: 8 (495) 375-71-83</div>
@@ -80,7 +80,7 @@
         {# // <script src="{% static "/bower/keyboard/layouts/keyboard-layouts-combined.js" %}"></script> #}
         {# // <script src="{% static "/bower/keyboard/languages/ru.js" %}"></script> #}
         <script src="{% static "/js/my-ru-keyboard.js" %}"></script>
-        // <script src="{% static "/js/redirect.js" %}"></script>
+        {# // <script src="{% static "/js/redirect.js" %}"></script> #}
         {# // <script src="{% static "/bower/keyboard/layouts/russian.js" %}"></script> #}
         {# // <script src="{% static "/bower/keyboard/layouts/keyboard-layouts-greywyvern.js" %}"></script> #}
         {# // <script src="{% static "/bower/keyboard/layouts/keyboard-layouts-microsoft.js" %}"></script> #}

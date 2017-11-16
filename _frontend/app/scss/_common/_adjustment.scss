@@ -16,8 +16,8 @@ html {
 }
 
 body {
+    line-height: 1.55;
 	font-size: $font;
-	line-height: 1.55;
 	font-family: $body-font;
     -webkit-font-smoothing: antialiased;
 	width:100%;
@@ -27,7 +27,6 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 }
-
 
 table {
 	border-collapse: collapse;

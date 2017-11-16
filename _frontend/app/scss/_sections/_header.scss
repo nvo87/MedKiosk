@@ -30,13 +30,13 @@
   text-align: center;
   padding: 35px 0px 20px;
   color: $font-color-light;
-  font-size: 2rem;
+  font-size: 2em;
   display: inline-block;
 }
 .sub-title{
   @include clearfix; 
   color:$font-color-light;
-  font-size: 1.1rem;
+  font-size: 0.6em;
   .sub-title__left{
     float: left;
   }
