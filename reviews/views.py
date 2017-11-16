@@ -5,20 +5,21 @@ from .models import Question, Answer, Patient
 
 # Create your views here.
 
-def review(request):
-    """ Страница вывода всех вопросов и формы ответа на них """
-    questions = Question.objects.all()
-    temp_answer = Answer()
+def reviews(request):
+    """ Страница выбора между анкетой и только отзывом """
+    return render(request, 'reviews/reviews.html')
 
-    context = {'questions':questions, 'answer':temp_answer,}
-    return render(request, 'reviews/review.html', context)
+def review(request):
+    """ Страница вывода только формы отзыва """
+    return render(request, 'reviews/review.html')
 
 def poll(request):
-    """ Страница вывода всех вопросов и формы ответа на них """
+    """ Страница вывода всех вопросов анкеты и формы отзыва """
     questions = Question.objects.all()
-    temp_answer = Answer()
+    temp_answer = Answer() 
+    rating_choices = temp_answer.rating_choices
 
-    context = {'questions':questions, 'answer':temp_answer,}
+    context = {'questions':questions, 'rating_choices':rating_choices,}
     return render(request, 'reviews/poll.html', context)
 
 def success(request):
@@ -42,21 +43,21 @@ def success(request):
         questions_id_list = get_formatted_id_list(questions, 'q')
 
         new_patient = Patient()
-        new_patient.full_name = form['p_name']
-        new_patient.phone = form['p_phone']
-        new_patient.review = form['p_review']
-        new_patient.age = form['p_age']
+        new_patient.full_name = form['p_name'] if form['p_name'] else  'Аноним'
+        new_patient.phone = form['p_phone'] if form['p_phone'] else  '00000'
+        new_patient.review = form['p_review'] if form['p_review'] else  'Пустой отзыв'
+        new_patient.age = form['p_age'] if form['p_age'] else  '00000'
         new_patient.save()
 
-        for question_id_item in questions_id_list:
-            # из hidden-поля для соответсвуюещго вопроса получаем значение id вопроса
-            question_id = int(form[question_id_item])
-            question = Question.objects.get(id=question_id)
-            rating = int(form['rating_'+question_id_item])
-            comment = form['comment_'+question_id_item]
+        if 'poll_flag' in form:
+            for question_id_item in questions_id_list:
+                # из hidden-поля для соответсвуюещго вопроса получаем значение id вопроса
+                question_id = int(form[question_id_item])
+                question = Question.objects.get(id=question_id)
+                rating = int(form['rating_'+question_id_item])
+                comment = form['comment_'+question_id_item]
 
-            new_answer = Answer(question=question, patient=new_patient, rating=rating, comment=comment)
-            new_answer.save()
-        
-        context = {'result':questions_id_list}
-        return render(request, 'reviews/success.html', context)
+                new_answer = Answer(question=question, patient=new_patient, rating=rating, comment=comment)
+                new_answer.save()
+
+        return render(request, 'reviews/success.html')

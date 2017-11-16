@@ -5,9 +5,10 @@
 
     <div class="big-menu">
         <a href="{% url 'about:about' %}" class="big-menu__btn js-fade">О больнице</a>
-        <a href="{% url 'map:map' %}" class="big-menu__btn js-fade">Найти палату / отделение</a>
-        <a href="{% url 'reviews:review' %}" class="big-menu__btn js-fade">Оставить отзыв</a>
-        <a href="{% url 'reviews:poll' %}" class="big-menu__btn js-fade">Пройти опрос</a>
+        <a href="{% url 'map:map' %}" class="big-menu__btn js-fade">Найти отделение</a>
+        <a href="{% url 'reviews:reviews' %}" class="big-menu__btn js-fade">Оставить отзыв</a>
+        {# <a href="{% url 'reviews:review' %}" class="big-menu__btn js-fade">Оставить отзыв</a> #}
+        {# <a href="{% url 'reviews:poll' %}" class="big-menu__btn js-fade">Пройти опрос</a> #}
     </div>
 
 {% endblock content %}

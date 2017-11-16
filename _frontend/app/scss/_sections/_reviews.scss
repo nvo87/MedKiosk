@@ -8,13 +8,24 @@
 }
 
 .form-row{
-    margin-bottom: 45px;
+    margin-bottom: 30px;
+}
+
+.form-row__info{
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .question__title{
     font-size: 2.4em;
-    margin-bottom: 75px;
+    margin-bottom: 45px;
     text-align: center;
+
+    .title-min{
+        font-size: 1.0rem;
+        margin-top: 25px;
+    }
 }
 
 .question__inner{
@@ -24,6 +35,7 @@
 .question__submit{
     text-align: center;
 }
+
 
 .question__submit-btn{
     letter-spacing: 1px;

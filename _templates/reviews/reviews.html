@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="big-menu">
+        <a href="{% url 'reviews:review' %}" class="big-menu__btn js-fade">Только отзыв</a>
+        <a href="{% url 'reviews:poll' %}" class="big-menu__btn js-fade">Заполнить анкету</a>
+    </div>
+{% endblock content %}

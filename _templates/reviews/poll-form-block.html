@@ -1,0 +1,35 @@
+{% for question in questions %}
+    <div class="question__inner{% if forloop.counter == 1 %} js-visible{% endif %}">
+        <div class="question__title">
+            <span>({{forloop.counter}}/{{questions|length}}) </span>
+            {{ question.text }} 
+        </div>
+        <div class="question__fields">
+            <div class="form-row">
+                <div class="question__rating">
+                    <div class="rating__title">Поставьте Вашу оценку:</div>
+                    <div class="rating__list">
+                    {% for choice in rating_choices %}
+                        <div class="rating__item">
+                            <input type="radio" class="rating__radio" {% if choice.0 == 5 %}checked="checked"{% endif %} name="rating_q{{ question.id }}" id="choice-{{ question.id }}-{{ choice.0 }}" value="{{ choice.0 }}" hidden="hidden">
+                            <label for="choice-{{ question.id }}-{{ choice.0 }}" class="rating__label">{{ choice.0 }}</label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="question__comment">
+                    <textarea class="comment__textarea js-keyboard" name="comment_q{{ question.id }}" id="comment_q{{ question.id }}" placeholder="Оставьте комментарий к оценке (необязательно)"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="question__submit">
+                    <a href="#" class="question__submit-btn js-nextQuestBtn">Подтвердить оценку -<span class="rating-mark">5</span></a>
+                </div>
+            </div>
+            <input type="hidden" name="q{{ question.id }}" value="{{ question.id }}">
+        </div>
+    </div>
+{% endfor %}
+            <input type="hidden" name="poll_flag" value="true">
