@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404 #получение объекта из БД или возврат 404 ошибки 
 
-from .models import Question, Answer, Patient
+from .models import Question, Option, Answer, Patient
 
 # Create your views here.
 
@@ -15,49 +15,69 @@ def review(request):
 
 def poll(request):
     """ Страница вывода всех вопросов анкеты и формы отзыва """
+    def get_answer_from_form(form):
+        question = Question.objects.get(id=form['questionId'])
+        option = Option.objects.get(id=form['optionId'])
+        patient = Patient.objects.get(id=form['patientId'])
+        return Answer(
+            question=question, 
+            patient=patient, 
+            option=option, 
+            )
+    
     questions = Question.objects.all()
-    temp_answer = Answer() 
-    rating_choices = temp_answer.rating_choices
 
-    context = {'questions':questions, 'rating_choices':rating_choices,}
+    if 'POST' != request.method:
+        # Данные не отправлялись, создается пустая форма.
+        # Новый пользователь-аноним, на время "сессии" анкетирования
+        patient = Patient()
+        patient.save()
+        # Метка для первого вопроса sort_order=0
+        question = questions.get(sort_order=0)
+    else:
+        form = request.POST
+        answer = get_answer_from_form(form)
+        answer.save()
+        patient = answer.patient
+        # Если для выбранной опции существует следующий вопрос, то продолжаем, иначе конец анкеты
+        if (answer.option.next_question):           
+            # id след.вопроса указан в таблице Options для каждого option
+            question = answer.option.next_question
+        else:
+            # Если нет след.вопроса, то идет страница отзыва и данных пациента. Передаем id пока еще анонимного пациента.
+            context = {'patient':patient}
+            return render(request, 'reviews/review.html', context)
+
+    options = question.option_set.all()
+
+    context = {
+        'question':question,
+        'options':options, 
+        'patient':patient,
+    }
+
     return render(request, 'reviews/poll.html', context)
+
 
 def success(request):
     """ Благодарность за ответ и обработка полученных данных """
-    
-    # Ответы на вопрос для конкретного ответа приходят в значениях q{{question.id}}.  Для перебора по всем таким именам, функция формирует список [q1, q2, q10,...]
-    # Для сопоставления ответов с конкретными вопросами, используются id вопроса. 
-    def get_formatted_id_list(query_set_object, format_str=''):
-        formatted_id_list = []
-        for item in query_set_object:
-            formatted_id_list.append(format_str+str(item.id))
-        return formatted_id_list
-
     if 'POST' != request.method:
-        #Данные не отправлялись, создается пустая форма.
+        # Данные не отправлялись, создается пустая форма.
         pass
     else:
-        #Отправлены данные POST, обработать данные.
+        # Отправлены данные POST, обработать данные.
         form = request.POST
-        questions = Question.objects.all()
-        questions_id_list = get_formatted_id_list(questions, 'q')
+        patient_id = form['patientId']
+        # Если на эту страницу попали после анкеты, то уже заведен новый пациент, и его id было заранее передано в форму в скрытый инпут. Если оставляют только отзыв (без анкеты), тогда создаем нового пациента.
+        if (patient_id):
+            patient = Patient.objects.get(id=patient_id)
+        else:
+            patient = Patient()
 
-        new_patient = Patient()
-        new_patient.full_name = form['p_name'] if form['p_name'] else  'Аноним'
-        new_patient.phone = form['p_phone'] if form['p_phone'] else  '00000'
-        new_patient.review = form['p_review'] if form['p_review'] else  'Пустой отзыв'
-        new_patient.age = form['p_age'] if form['p_age'] else  '00000'
-        new_patient.save()
-
-        if 'poll_flag' in form:
-            for question_id_item in questions_id_list:
-                # из hidden-поля для соответсвуюещго вопроса получаем значение id вопроса
-                question_id = int(form[question_id_item])
-                question = Question.objects.get(id=question_id)
-                rating = int(form['rating_'+question_id_item])
-                comment = form['comment_'+question_id_item]
-
-                new_answer = Answer(question=question, patient=new_patient, rating=rating, comment=comment)
-                new_answer.save()
+        patient.full_name = form['p_name'] if form['p_name'] else ''
+        patient.phone = form['p_phone'] if form['p_phone'] else ''
+        patient.review = form['p_review'] if form['p_review'] else ''
+        patient.age = form['p_age'] if form['p_age'] else  None
+        patient.save()
 
         return render(request, 'reviews/success.html')

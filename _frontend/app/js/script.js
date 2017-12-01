@@ -56,15 +56,17 @@ jQuery(window).ready(function($) {
         }
 
         function _setUpListeners() {
-            $(nextQuestionBtn).on('click', _showNextScreen);
+            // $(nextQuestionBtn).on('click', _showNextScreen);
             ratingRadioBtn.on('click', _changeSubmitBtnText);
         }
 
         function _changeSubmitBtnText() {
-            var mark = $(this).val();
+            var markNumber = ratingRadioBtn.index(this)+1;
+            console.log($(this));
             submitBtn = $(this).closest(questionWrapClass).find(nextQuestionBtnClass);
-            ratingMark = submitBtn.children(textOnNextQuestBtn).text(mark);
+            ratingMark = submitBtn.children(textOnNextQuestBtn).text(markNumber);
         }
+        
         function _showNextScreen(e) {
             e.preventDefault();
             $(questionScreens[currentQuestionScreen]).fadeOut(fadeTime, function() {
@@ -81,6 +83,7 @@ jQuery(window).ready(function($) {
     QuestionFormCarousel.init();
 
 
+    // таблица этажей
     var FloorTableAccordionModule = (function () {       
         var
             $colItem = $('.floor-table__link');

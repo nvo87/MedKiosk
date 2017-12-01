@@ -3,11 +3,44 @@
 {% block content %}
     <div class="poll-form">
         <div class="poll-form__inner">
-            <form action="{% url 'reviews:success' %}" method="post" id="pollForm">
+            <form action="{% url 'reviews:poll' %}" method="POST" id="pollForm">
             {% csrf_token %}
                 <div class="question">
-                    {% include "reviews/poll-form-block.html" %}
-                    {% include "reviews/review-form-block.html" %}
+                    <div class="question__inner">
+                        <div class="question__title">
+                            {{ question.text }} 
+                        </div>
+                        <div class="question__fields">
+                            <div class="form-row">
+                                <div class="question__rating">
+                                    <div class="rating__title">Выберите один вариант:</div>
+                                    <div class="rating__list">
+                                    {% for option in options %}
+                                        <div class="rating__item">
+                                            <input type="radio" class="rating__radio" {% if choice.0 == 0 %}checked="checked"{% endif %} name="optionId" id="option-{{ question.id }}-{{ option.id }}" value="{{ option.id }}" hidden="hidden">
+                                            <label for="option-{{ question.id }}-{{ option.id }}" class="rating__label"><div class="rating__label-text">{{ option }}</div></label>
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--                             <div class="form-row">
+                                <div class="question__comment">
+                                    <textarea class="comment__textarea js-keyboard" name="comment" id="comment_q{{ question.id }}" placeholder="Оставьте комментарий к оценке (необязательно)"></textarea>
+                                </div>
+                            </div> -->
+                            <div class="form-row">
+                                <div class="question__submit">
+                                    <button type="submit" class="question__submit-btn js-nextQuestBtn">Подтвердить выбор №<span class="rating-mark"></span></a>
+                                </div>
+                            </div>
+                            <input type="hidden" name="questionId" value="{{ question.id }}">
+                            <input type="hidden" name="patientId" value="{{ patient.id }}">
+                        </div>
+                    </div>
+
+
+
                 </div>
             </form>
         </div>
