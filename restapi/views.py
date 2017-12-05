@@ -2,8 +2,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from reviews.models import Question, Answer, Patient
-from .serializers import QuestionSerializer, AnswerSerializer, PatientSerializer
+from reviews.models import Question, Answer, Patient, Option
+from .serializers import QuestionSerializer, AnswerSerializer, PatientSerializer, OptionSerializer
 from django.http import Http404
 
 
@@ -78,4 +78,12 @@ class PatientList(APIView):
     def get(self, request):
         patients = Patient.objects.all()
         serializer = PatientSerializer(patients, many=True)
+        return Response(serializer.data)
+
+
+class OptionList(APIView):
+
+    def get(self, request):
+        options = Option.objects.all()
+        serializer = OptionSerializer(options, many=True)
         return Response(serializer.data)

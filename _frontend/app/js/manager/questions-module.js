@@ -40,32 +40,47 @@ var QuestionsModule = (function () {
         e.preventDefault();
         var $this = $(this);
         var questionId = $this.data('id');
-        var answersToQuestion = [];
+        var answers = [];
+        var options = [];
+        var answersGroupedByOptions = [];
         var ratings = {};
         var dataRange=[];
 
         _toggleActiveClass($this);
-        currentQuestionId = questionId;
 
+        // появляются на экране
         AnswersModule.showAnswersModule();
         ChartModule.showChartModule();
 
-        // Отсеиваем ответы для выбранного вопроса и разбиваем оценки в ответах на диапазоны.
-        answersToQuestion = AnswersModule.filterAnswersByQuestionId(questionId);
-        ratings = AnswersModule.sortRatingsByRanges(answersToQuestion);
+        // Отсеиваем ответы для выбранного вопроса
+        answers = AnswersModule.filterAnswersByQuestionId(questionId);
+        // Получаем все возможные варианты ответов на данный вопрос
+        options = OptionsModule.getOptionsForQuestion(questionId);
+        answersGroupedByOptions = AnswersModule.sortAnswersByOptions(options, answers);
 
-        // Строим график - количество оценок для каждого диапазона
+        ChartModule.setDataSet(answersGroupedByOptions);
+   
+/* 
+-----------------------------------------------------------------     
+ОТКЛЮЧИЛ, т.к. от ответов в баллах от 1 до 10, перешли к произвольным ответам.  
+
+        // Если варианты ответов - это баллы от 1 до 10, то сортируем их по диапазонам (1-3, 4-7, 8-10 - диапазоны задаются в настройках SETTINGS)
+        ratings = AnswersModule.sortRatingsByRanges(answers);
+
+        // Строим график - количество оценок для каждого диапазона (ось Y, высота столбцов)
         dataRange = [
             ratings.low.length, 
             ratings.mid.length,
             ratings.high.length
         ];
         ChartModule.setDataSet(dataRange);
+-----------------------------------------------------------------
+*/       
         ChartModule.update();
 
         // Рендерим список людей давших ответы
-        AnswersModule.showAnswersData(answersToQuestion);
-        AnswersModule.showStats(answersToQuestion);
+        AnswersModule.showAnswersData(answers);
+        AnswersModule.showStats(answers);
 
         PrintModule.enablePrintBtn();
 

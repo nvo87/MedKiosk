@@ -17,18 +17,18 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+            <nav class="col-sm-3 col-md-3 d-none d-sm-block bg-light sidebar">
                 <div id="QuestionsModuleBlock">
                     <ul class="nav nav-pills flex-column question-list">
                         {% for question in questions %}
                             <li class="nav-item question-item">
-                                <a class="nav-link question-link" href="#" data-id={{question.id}}>{{ question.text }}<span class="sr-only">(current)</span></a>
+                                <a class="nav-link question-link q-ml-{{question.nesting_level}}" href="#" data-id={{question.id}}>{{ question.text }}<span class="sr-only">(current)</span></a>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
             </nav>
-            <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+            <main class="col-sm-9 ml-sm-auto col-md-9 pt-3" role="main">
                 <div class="main-wrapper">
                     <div class="row justify-content-between">
                         <h1 class="d-print-none">Статистика</h1>

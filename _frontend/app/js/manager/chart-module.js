@@ -38,10 +38,11 @@ var ChartModule = (function () {
             type: 'bar',
             data: {
                 labels: [
-                    // RANGES[номер диапазона][0 - мин.знач; 1 - макс.знач]
-                    RANGES[0][0]+"-"+RANGES[0][1]+" балла", 
-                    RANGES[1][0]+"-"+RANGES[1][1]+" балла", 
-                    RANGES[2][0]+"-"+RANGES[2][1]+" балла"
+                    // // RANGES[номер диапазона][0 - мин.знач; 1 - макс.знач]
+                    // RANGES[0][0]+"-"+RANGES[0][1]+" балла", 
+                    // RANGES[1][0]+"-"+RANGES[1][1]+" балла", 
+                    // RANGES[2][0]+"-"+RANGES[2][1]+" балла"
+                    1,2,3,4
                     ],
                 datasets: [{
                     label: 'Кол-во оценок',
@@ -56,7 +57,9 @@ var ChartModule = (function () {
                 }]
             },
             options: {
-                legend: {display: false},
+                legend: {
+                    display: true
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -134,8 +137,20 @@ var ChartModule = (function () {
         myChart.update();
     }
 
-    function _setDataSet(dataArray) {
-        myChart.data.datasets[0].data = dataArray;
+    function _setDataSet(answersArray) {
+        var xArray = []; // вариант ответа
+        var yArray = []; // количество ответов для каждого варианта
+        var yMax = 0; // максимальное значение по оси Y (для масштабирования)
+        for (item in answersArray) {
+            xArray[item] = +item + 1; // делаем нумерацию вариантов с 1. +item - быстрое преобразование к числу
+            yArray[item] = answersArray[item].length;
+        }
+        var yMax = Math.max.apply(null, yArray);
+
+        console.log(answersArray);
+        myChart.data.labels = xArray;
+        myChart.data.datasets[0].data = yArray;
+        myChart.options.scales.yAxes[0].ticks.max = +yMax + 1;
         myChart.data.datasets[0].backgroundColor = defaultBackgroundColor;
     }
 

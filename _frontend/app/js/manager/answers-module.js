@@ -45,16 +45,26 @@ var AnswersModule = (function () {
         $reviewContent.fadeToggle(FADEIN_TIME);
     }
 
-    function _filterByQuestionId(question_id, answers){
+    function _filterByQuestionId(questionId, answers){
         /* Ф-ия отсеивает из всего массива с ответами ANSWERS только ответы на определенный вопрос по его id. */
         answers = answers || ANSWERS;
         var filteredAnswers = [];
         for (item in answers) {
-            if (answers[item]['question']['id'] === question_id) {
+            if (answers[item]['question']['id'] === questionId) {
                 filteredAnswers.push(answers[item]);
             }
         }
         return filteredAnswers;
+    }
+
+    function _sortByOptions(options, answers){
+        var sortedAnswers = [];
+        for (item in options) {
+            sortedAnswers[item] = answers.filter(function(answer){
+                return answer['option']['id'] == options[item]['id'];
+            });    
+        }
+        return sortedAnswers;
     }
 
     function _filterByRatingRange(min, max, answers){
@@ -102,7 +112,7 @@ var AnswersModule = (function () {
         });
 
         // из скрипта вставленного в html создаем конечный шаблон
-        // replace(/[\u200B]/g, '') - это костыль, чтобы убрать текстовую ноду &#8203, которая генерируется первым элементом списка и из-за этого делает лишний отступ в верстке. см.ZERO WIDTH SPACE проблема
+        // replace(/[\u200B]/g, '') - это костыль, чтобы убрать текстовую ноду &#8203, которая генерируется первым элементом списка и из-за этого делает лишний отступ в верстке. см."ZERO WIDTH SPACE проблема"
         var templateScript = handlebarsScriptId.html().replace(/[\u200B]/g, '');
         return Handlebars.compile(templateScript);
     }
@@ -153,6 +163,7 @@ var AnswersModule = (function () {
         init: _init,
         filterAnswersByQuestionId: _filterByQuestionId,
         filterAnswersByRatingRange: _filterByRatingRange,
+        sortAnswersByOptions: _sortByOptions,
         sortRatingsByRanges: _sortRatingsByRanges,
         showAnswersData: _showAnswersData,
         showAnswersModule: _showAnswersModuleBlock,

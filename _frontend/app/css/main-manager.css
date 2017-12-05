@@ -67,6 +67,20 @@ h1 {
   border-radius: 0;
 }
 
+.q-ml-0{
+  margin-left: 0px;
+  font-weight: bold;
+}
+.q-ml-1{
+  margin-left: 10px;
+}
+.q-ml-2{
+  margin-left: 20px;
+}
+.q-ml-3{
+  margin-left: 30px;
+}
+
 /*
  * Dashboard
  */

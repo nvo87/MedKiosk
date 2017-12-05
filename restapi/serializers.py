@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from reviews.models import Question, Answer, Patient
+from reviews.models import Question, Answer, Patient, Option
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -22,4 +22,12 @@ class PatientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Patient
+        fields = '__all__'
+
+
+
+class OptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Option
         fields = '__all__'

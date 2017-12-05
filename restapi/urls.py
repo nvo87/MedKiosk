@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^answers/$', views.AnswerList.as_view()),
     url(r'^answers-to-question/(?P<question_id>[0-9]+)/$', views.AnswersByQuestionId.as_view()),
     url(r'^patients/$', views.PatientList.as_view()),
+    url(r'^options/$', views.OptionList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
