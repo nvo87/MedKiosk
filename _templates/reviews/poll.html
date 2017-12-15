@@ -10,14 +10,14 @@
                         <div class="question__title">
                             {{ question.text }} 
                         </div>
-                        <div class="question__fields">
+                        <div class="question__fields poll-fields">
                             <div class="form-row">
                                 <div class="question__rating">
                                     <div class="rating__title">Выберите один вариант:</div>
                                     <div class="rating__list">
                                     {% for option in options %}
                                         <div class="rating__item">
-                                            <input type="radio" class="rating__radio" {% if choice.0 == 0 %}checked="checked"{% endif %} name="optionId" id="option-{{ question.id }}-{{ option.id }}" value="{{ option.id }}" hidden="hidden">
+                                            <input type="radio" class="rating__radio" {% if forloop.counter == 1 %}checked="checked"{% endif %} name="optionId" id="option-{{ question.id }}-{{ option.id }}" value="{{ option.id }}" hidden="hidden">
                                             <label for="option-{{ question.id }}-{{ option.id }}" class="rating__label"><div class="rating__label-text">{{ option }}</div></label>
                                         </div>
                                     {% endfor %}
@@ -31,7 +31,7 @@
                             </div> -->
                             <div class="form-row">
                                 <div class="question__submit">
-                                    <button type="submit" class="question__submit-btn js-nextQuestBtn">Подтвердить выбор №<span class="rating-mark"></span></a>
+                                    <button type="submit" class="question__submit-btn js-nextQuestBtn">Подтвердить выбор №<span class="rating-mark">1</span></a>
                                 </div>
                             </div>
                             <input type="hidden" name="questionId" value="{{ question.id }}">

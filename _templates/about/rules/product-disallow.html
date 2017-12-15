@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="about">
+    <div class="about-info-wrapper">
+        <div class="about-title">
+            Лечебно-охранительный режим
+        </div>
+        <div class="about-infoblock">
+            <div class="about-infoblock-title">
+                Запрещенные для передачи пищевые продукты
+            </div>
+            <div class="info-table__wrapper products-table">
+                <table class="info-table__table">
+                    <tr class="info-table__row">
+                        <th class="info-table__header">Продукты</th>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Кондитерские изделия с кремом (торты, пирожные и т.д.)</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Шоколадные конфеты</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Сырые яйца</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Консервы</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Колбасные и рыбные изделия</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Домашние салаты</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Копченые, жареные изделия</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Алкогольные напитки</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

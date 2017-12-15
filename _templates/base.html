@@ -15,30 +15,30 @@
 
         <link rel="stylesheet" href="{% static "/bower/jquery-ui/themes/base/jquery-ui.css" %}">
         <link rel="stylesheet" href="{% static "/bower/keyboard/dist/css/keyboard.min.css" %}">
+        <link rel="stylesheet" href="{% static "/bower/components-font-awesome/css/font-awesome.min.css" %}">
         {# <link rel="stylesheet" href="{% static "/css/fonts.css" %}"> #}
         <link rel="stylesheet" href="{% static "/css/main.css" %}">
-        <script src="https://use.fontawesome.com/6370e7cb18.js"></script>
         <title>Главная страница</title>
     </head>
     <body>
-        <div class="main-wrapper filter{% if request.get_full_path != "/" %} filter--dark{% endif %}">
+        <div class="main-wrapper filter">
             <header class="header">
                 <div class="header__logo logo">
                     <a href="/" class="logo__link">
-                        <img src="{% static "/img/logo.png" %}" alt="Городская клиническая больница №15 им. О.М. Филатова" class="logo__img">
+                        <img src="{% static "/img/logo-vert.png" %}" alt="Городская клиническая больница №15 им. О.М. Филатова" class="logo__img">
                     </a>
                 </div>
                 <div class="container {% if request.get_full_path != "/" %} device-hidden{% endif %}">
+                    {% if request.get_full_path == "/" %} 
                     <div class="header__title">
                         <div class="main-title">
-                            <div>Городская клиническая больница №15 им. О.М. Филатова</div>
+                            <div>Ваше здоровье - </div>
                             <div class="sub-title">
-                                <div class="sub-title__left">Департамент здравоохранения Москвы</div>
-                                <div class="sub-title__right">"Ваше здоровье - наш ежедневный труд"</div>
+                                <div class="sub-title__right">наш ежедневный труд!</div>
                             </div>
                         </div>
-                        
                     </div>
+                    {% endif %}
                 </div>
             </header>
             <section class="main-content" id="mainContent">
@@ -47,22 +47,55 @@
 
                 {% endblock content %}
             </section>
+
+            {% if request.get_full_path == "/" %} 
             <footer class="footer device-hidden">
                     <div class="footer__content">
-                        <div class="footer__info">Справочная стационара: 8 (495) 375-71-83</div>
-                        <div class="footer__info">Справочная КДЦ: 8 (495) 375-71-83</div>
-                        <div class="footer__info">Справочная род. дома: 8 (495) 375-71-83</div>
+                        <div class="footer__info">Адрес: 111539, Москва, <br> ул. Вешняковская, д.23 <br>
+                        e-mail: <br> 
+                        info@gkb15.mosgorzdrav.ru 
+                        </div>
+                        <div class="footer__info footer__info--right">
+                        Справочная стационара: 8 (495) 375-71-01<br>
+                        Справочная КДЦ: 8 (495) 375-37-70<br>
+                        Справочная роддома: 8 (495) 375-31-00<br>
+                        Платные услуги: 8 (495) 375-15-55
+                        </div>
+                        <div class="footer__info">
+                        сайт: gkb15.moscow <br>
+                        facebook.com/15gkb <br>
+                        instagram.com/15gkb <br>
+                        vk.com/filatovka15
+                        </div>
                     </div>
             </footer>
+            {% endif %}
 
-            {% if request.get_full_path != "/" %} 
             <div class="nav-btns">
+            {% if request.get_full_path != "/" %} 
+                <a href="/" class="nav-btns__btn left-btn js-fade">
+                    <span class="nav-btns__text">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i><br>
+                    назад</span>
+                </a>
+                <a href="/" class="nav-btns__btn right-btn js-fade">
+                    <span class="nav-btns__text">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i><br>
+                    вперед</span>
+                </a>
                 <a href="/" class="nav-btns__btn home-btn js-fade">
-                    <i class="nav-btns__icon fa fa-bars" aria-hidden="true"></i>
-                    <span class="nav-btns__text">Меню</span>
+                    <span class="nav-btns__text">
+                    <i class="fa fa-home" aria-hidden="true"></i><br>
+                    на главную</span>
+                </a>
+
+            {% endif %}
+                <a href="/" class="nav-btns__btn zoom-btn js-fade">
+                    <span class="nav-btns__text">
+                        <i class="fa fa-low-vision" aria-hidden="true"></i><br>
+                    a&#8594;A</span>
                 </a>
             </div>
-            {% endif %}
 
         </div>
         <script>

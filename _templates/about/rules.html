@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="about">
+    <div class="about-info-wrapper">
+        <div class="about-title">
+            Лечебно-охранительный режим
+        </div>
+        <div class="about-infoblock">
+            <div class="about-subtitle">
+                Уважаемые пациенты!
+            </div>
+            <div class="about-text">
+                Учреждение здравоохранения не несет ответственности за не сданные пациентами на хранение: вещи, ценности, деньги, документы, банковские карточки, мобильные телефоны, планшеты, ноутбуки и т.п.
+            </div>
+        </div>
+        <div class="about-infoblock">
+            <div class="about-menu">
+                <a href="{% url 'about:patients_rules' %}" class="about-menu__btn">Правила для пациентов</a>
+                <a href="{% url 'about:ban' %}" class="about-menu__btn">Запрещено</a>
+                <a href="{% url 'about:product_allow' %}" class="about-menu__btn">Разрешенные продукты</a>
+                <a href="{% url 'about:product_disallow' %}" class="about-menu__btn">Запрещенные продукты</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -2,11 +2,15 @@
 
 $container-width: 80%; // ширина контейнера с основным контентом (текстом, таблицами)
 $body-font: 'Open Sans', sans-serif;  // базовый шрифт №1
+// $body-font: arial;  // базовый шрифт №1
 $font: 16px;
 $font-color-light: #f2ffff;  // цвет текста на темном
-$btn-color: #3B4C6C;        // фон кнопок
-$main-wrapper-padding: 0 15px;  // маленький отступ от краев экрана
-
+$btn-color: #333399;        // фон кнопок
+$main-wrapper-padding: 0 20px;  // маленький отступ от краев экрана
+$about-text-color: #333399;
+$alt-text-color: #099;
+$btn-color: #ff6a42;
+$alt-btn-color: #ff6a42;
 
 html {
 	width:100%;
@@ -68,9 +72,7 @@ p {
     min-height: 100vh;
     position: absolute;
     z-index: 1;
-    background-image: -webkit-gradient( linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.4)) );
-    background-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,0.4));
-    background-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.4));	
+    background-image: linear-gradient(to bottom,rgba(153, 153, 153, 0.86),rgba(0,0,0,.4));	
 }
 
 .filter--dark{
@@ -91,26 +93,90 @@ p {
     max-width: 1080px;
 	@include clearfix;
 }
-
 .nav-btns{
+    display: flex;
     position: fixed;
-    bottom: 55px;
-    right: 15px;
+    z-index:1000;
+    top: 25px;
+    right: 2%;
 }
 .nav-btns__btn{
-    width: 90px;
-    height: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 1.2rem;
-    border-radius: 10px;
-    color: rgb(136, 136, 12);
-    background-color: rgba(59, 76, 108, 0.51);
-    text-decoration: none;
-    margin-top: 15px;
+    // position: fixed;
+    margin:0 15px;
+
+    &:last-child{
+        margin-right:0;
+    }
+    
+    &.zoom-btn{
+        @extend .big-nav-btn;
+        right: 2%;
+        top: 25px;
+        font-size: 2.0rem;
+        text-decoration: none;
+        font-weight: 700;
+        color: #009999;
+    
+        .fa-low-vision{
+            font-size: 60px;
+            color: $alt-btn-color;
+        }
+    }
+    
+    &.home-btn{
+        top: 25px;
+        right: 25px;
+        @extend .big-nav-btn;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        color: #009999;
+        background-color: rgba(59, 76, 108, 0.51);
+        text-decoration: none;
+
+        .fa-home{
+            font-size: 60px;
+            color: $alt-btn-color;
+        }
+    }
+
+    &.left-btn{
+        top: 25px;
+        right: 25px;
+        @extend .big-nav-btn;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        color: #009999;
+        background-color: rgba(59, 76, 108, 0.51);
+        text-decoration: none;
+
+        .fa-arrow-left{
+            font-size: 60px;
+            color: $alt-btn-color;
+        }
+    }
+
+    &.right-btn{
+        top: 25px;
+        right: 25px;
+        @extend .big-nav-btn;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        color: #009999;
+        background-color: rgba(59, 76, 108, 0.51);
+        text-decoration: none;
+        margin-right: 15px;
+
+        .fa-arrow-right{
+            font-size: 60px;
+            color: $alt-btn-color;
+        }
+    }
+
 }
 
 .nav-btns .nav-btns__icon{

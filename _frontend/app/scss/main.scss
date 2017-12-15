@@ -6,12 +6,12 @@
 @import "_common/_normalize";
 @import "_common/_adjustment";
 
-/* --------- sprites --------- */
-@import "_common/_sprite";
 /* --------- sections --------- */
 
  @import "_sections/header";
  @import "_sections/content";
+ @import "_sections/about";
+ @import "_sections/map";
  @import "_sections/reviews";
  @import "_sections/footer";
 

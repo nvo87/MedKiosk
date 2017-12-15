@@ -1,6 +1,7 @@
 .header{
     padding: $main-wrapper-padding;
     z-index: 10;
+    height: 188px;
 }
 
 
@@ -9,10 +10,13 @@
 }
 
 .logo{
+  @extend .big-nav-btn;
   position: absolute;
   top: 25px;
-  left: 5%;
-  width: 70px;
+  left: 2%;
+  width: 150px;
+  background-color:white;
+  border-radius: 10px;
 }
 
 .logo__link{
@@ -27,21 +31,25 @@
   text-align: center;
 }
 .main-title{
-  text-align: center;
-  padding: 35px 0px 20px;
-  color: $font-color-light;
-  font-size: 2em;
-  display: inline-block;
+  padding: 40px 0 20px;
+  color: #f2ffff;
+  font-size: 2.6rem;
+  text-align: left;
+  margin: 0 100px;
+  display: block;
+  font-style: italic;
+  letter-spacing: 5px;
+  text-shadow: 1px 1px 2px #000;
 }
 .sub-title{
   @include clearfix; 
   color:$font-color-light;
-  font-size: 0.6em;
+  // font-size: 0.6em;
   .sub-title__left{
     float: left;
   }
   .sub-title__right{
+    font-size: 1em;
     float: right;
-    font-style: italic;
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "simple-html-scss",
   "dependencies": {
-    "jquery": "1.11"
+    "jquery": "1.11",
     "keyboard": "^1.26.26"
   }
 }

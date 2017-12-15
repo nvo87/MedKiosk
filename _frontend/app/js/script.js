@@ -86,7 +86,13 @@ jQuery(window).ready(function($) {
     // таблица этажей
     var FloorTableAccordionModule = (function () {       
         var
-            $colItem = $('.floor-table__link');
+            $table = $('.floor-table__table'),
+            $colItem = $('.floor-table__link'),
+            $colContent = $('.floor-table__col-content'),
+            $closeBtn = $('.popup-close-btn'),
+            $popup = $('#floorPopup'),
+            $popupContent = $popup.find('#floorPopupContent'),
+            popupVisibleClass = 'js-visible';
 
         function _init() {
             _setUpListeners();
@@ -94,17 +100,24 @@ jQuery(window).ready(function($) {
 
         function _setUpListeners() {
             $colItem.on('click', _toggleContent);
+            $closeBtn.on('click', _closePopup);  
+        }
+
+        function _closePopup(e) {
+            e.preventDefault();
+
+            $popup.removeClass(popupVisibleClass);
         }
 
         function _toggleContent(e){
             e.preventDefault();
             
-            $this = $(this);
-
-            $table = $this.closest('.floor-table__table');
-            $colItems = $table.find('.floor-table__link');
-            $colItems.removeClass('js-content-visible');
-            $this.addClass('js-content-visible');
+            var $this = $(this);
+            var $table = $this.closest($table);
+            
+            var content = $this.find($colContent).html();
+            $popupContent.html(content);
+            $popup.addClass(popupVisibleClass);
         }
 
 

@@ -6,7 +6,7 @@ jQuery.keyboard.language.ru = {
     language: '\u0420\u0443\u0441\u0441\u043a\u0438\u0439 (Russian)',
     display : {
         'a'      : '\u2714:Сохранить (Shift+Enter)', // check mark - same action as accept
-        'accept' : 'Сохранить:Сохранить (Shift+Enter)',
+        'accept' : 'Далее:Сохранить (Shift+Enter)',
         'alt'    : 'РУС:Русская клавиатура',
         'b'      : '\u2190:Удалить символ слева',    // Left arrow (same as &larr;)
         'bksp'   : '\u21e6 Стереть:Удалить символ слева',
@@ -41,20 +41,34 @@ $(function() {
           layout: 'custom',
           stickyShift: false,
           autoAccept: true,
+          position : {
+            // null (attach to input/textarea) or a jQuery object (attach elsewhere)
+            of : null,
+            my : 'center center',
+            at : 'center top',
+            // at2 is used when "usePreview" is false (centers keyboard at the bottom
+            // of the input/textarea)
+            at2: 'center bottom',
+            collision: 'flipfit flipfit'
+          },
           customLayout: {
             'normal' : [
+                '. , ! " \u2116 ; \u20ac : ? * ( ) _ +',
                 "\u0451 1 2 3 4 5 6 7 8 9 0 - № {bksp}",
                 " \u0439 \u0446 \u0443 \u043a \u0435 \u043d \u0433 \u0448 \u0449 \u0437 \u0445 \u044a \\",
                 "\u0444 \u044b \u0432 \u0430 \u043f \u0440 \u043e \u043b \u0434 \u0436 \u044d {enter}",
-                "{shift} \u044f \u0447 \u0441 \u043c \u0438 \u0442 \u044c \u0431 \u044e . {shift}",
-                "{accept} {space} {cancel}"
+                "{shift} \u044f \u0447 \u0441 \u043c \u0438 \u0442 \u044c \u0431 \u044e . , {shift}",
+                "{space}",
+                "{accept}"
             ],
             'shift' : [
-                '\u0401 ! " \u2116 ; \u20ac : ? * ( ) _ + {bksp}',
+                '. , ! " \u2116 ; \u20ac : ? * ( ) _ +',
+                "\u0401  1 2 3 4 5 6 7 8 9 0 - № {bksp}",
                 " \u0419 \u0426 \u0423 \u041a \u0415 \u041d \u0413 \u0428 \u0429 \u0417 \u0425 \u042a /",
                 "\u0424 \u042b \u0412 \u0410 \u041f \u0420 \u041e \u041b \u0414 \u0416 \u042d {enter}",
-                "{shift} \u042f \u0427 \u0421 \u041c \u0418 \u0422 \u042c \u0411 \u042e , {shift}",
-                "{accept} {space} {cancel}"
+                "{shift} \u042f \u0427 \u0421 \u041c \u0418 \u0422 \u042c \u0411 \u042e . , {shift}",
+                "{space}",
+                "{accept}"
             ]
           }
         });
@@ -63,5 +77,68 @@ $(function() {
         //   showTyping: true,
         //   delay: 250
         // });
+
+        $('.js-keyboard--number').keyboard({
+              usePreview: true,
+              language: "ru",
+              // layout: 'russian-qwerty'
+              layout: 'custom',
+              stickyShift: false,
+              autoAccept: true,
+              position : {
+                // null (attach to input/textarea) or a jQuery object (attach elsewhere)
+                of : null,
+                my : 'center top',
+                at : 'center top',
+                // at2 is used when "usePreview" is false (centers keyboard at the bottom
+                // of the input/textarea)
+                at2: 'center bottom',
+                collision: 'flip'
+              },
+              customLayout: {
+                'normal' : [
+                    " 1 2 3 ",
+                    " 4 5 6 ",
+                    " 7 8 9 ",
+                    "0 {bksp}",
+                    "{accept}"
+                ]
+              }
+            });
+
+        $('.js-keyboard--short').keyboard({
+              usePreview: true,
+              language: "ru",
+              // layout: 'russian-qwerty'
+              layout: 'custom',
+              stickyShift: false,
+              autoAccept: true,
+              position : {
+                // null (attach to input/textarea) or a jQuery object (attach elsewhere)
+                of : null,
+                my : 'left top',
+                at : 'left top',
+                // at2 is used when "usePreview" is false (centers keyboard at the bottom
+                // of the input/textarea)
+                at2: 'left top',
+                collision: 'flipfit flipfit'
+              },
+                customLayout: {
+                  'normal' : [
+                      " \u0439 \u0446 \u0443 \u043a \u0435 \u043d \u0433 \u0448 \u0449 \u0437 \u0445 \u044a {bksp}",
+                      "\u0444 \u044b \u0432 \u0430 \u043f \u0440 \u043e \u043b \u0434 \u0436 \u044d {shift}",
+                      "\u044f \u0447 \u0441 \u043c \u0438 \u0442 \u044c \u0431 \u044e ",
+                      "{space}",
+                      "{accept}"
+                  ],
+                  'shift' : [
+                      " \u0419 \u0426 \u0423 \u041a \u0415 \u041d \u0413 \u0428 \u0429 \u0417 \u0425 \u042a {bksp}",
+                      "\u0424 \u042b \u0412 \u0410 \u041f \u0420 \u041e \u041b \u0414 \u0416 \u042d {shift}",
+                      "\u042f \u0427 \u0421 \u041c \u0418 \u0422 \u042c \u0411 \u042e",
+                      "{space}",
+                      "{accept}"
+                  ]
+                }
+            });
 
     });

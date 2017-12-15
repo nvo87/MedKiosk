@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="about">
+    <div class="about-info-wrapper">
+        <div class="about-title">
+            Лечебно-охранительный режим
+        </div>
+        <div class="about-infoblock">
+            <div class="about-text about-text--alert">
+                Хранение продуктов пациентами в холодильниках отделений осуществляется исключительно в полиэтиленовом пакете с указанием фамилии и номера палаты.<br>
+                Неподписанные продукты изымаются!
+            </div>
+        </div>
+        <div class="about-infoblock">
+            <div class="about-infoblock-title">
+                Разрешенные для передачи пищевые продукты
+            </div>
+            <div class="info-table__wrapper products-table">
+                <table class="info-table__table">
+                    <tr class="info-table__row">
+                                <th class="info-table__header">Продукты</th>
+                                <th class="info-table__header">Количество<br>1 упаковка</th>
+                                <th class="info-table__header">Сроки<br>реализации</th>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Мясо отварное</td>
+                        <td class="info-table__col">200 грамм</td>
+                        <td class="info-table__col">12 часов</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Бульон мясной/куриный</td>
+                        <td class="info-table__col">200 грамм</td>
+                        <td class="info-table__col">12 часов</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Молоко (пастеризованное, стерилизованное)</td>
+                        <td class="info-table__col">0,5 литра</td>
+                        <td class="info-table__col">24 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Кефир (пастеризованный)</td>
+                        <td class="info-table__col">0,5 литра</td>
+                        <td class="info-table__col">24 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Йогурт</td>
+                        <td class="info-table__col">0,5 литра</td>
+                        <td class="info-table__col">24 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Сметана</td>
+                        <td class="info-table__col">200 грамм</td>
+                        <td class="info-table__col">24 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Творог</td>
+                        <td class="info-table__col">200 грамм</td>
+                        <td class="info-table__col">24 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Сок, морс, компот</td>
+                        <td class="info-table__col">500 грамм</td>
+                        <td class="info-table__col">24 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Фрукты/овощи свежие, в чистом виде</td>
+                        <td class="info-table__col">500 грамм</td>
+                        <td class="info-table__col">48 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Сыр</td>
+                        <td class="info-table__col">100 грамм</td>
+                        <td class="info-table__col">72 часа</td>
+                    </tr>
+                    <tr class="info-table__row">
+                        <td class="info-table__col">Масло сливочное</td>
+                        <td class="info-table__col">100 грамм</td>
+                        <td class="info-table__col">72 часа</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="about-text about-text--alert">
+                Продукты с истекшим сроком реализации утилизируются без предупреждения больных!
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

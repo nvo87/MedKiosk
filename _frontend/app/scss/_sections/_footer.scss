@@ -1,7 +1,7 @@
 .footer{
 	background-color: $btn-color;
 	padding: $main-wrapper-padding;
-	opacity: 0.8;
+	opacity: 0.92;
 }
 .footer__content{
 	width: 100%;
@@ -9,4 +9,8 @@
 	justify-content: space-between;
 	color: $font-color-light;
 	padding: 10px 0;
+}
+
+.footer__info--right{
+    text-align: right;
 }
