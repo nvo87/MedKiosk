@@ -4,16 +4,18 @@
 {% block content %}
 
     <div class="map">
-        <div class="title">Выберите ваш корпус
-            <span class="title-min">(нажмите на подсказку над корпусом)</span>
-        </div>
         <div class="map__wrapper">
-            <img class="map__img" src="{% static "img/map2.jpg" %}" alt="Интерактивная карта расположения корпусов больницы №15">
-            <a href="{% url 'map:main_building' %}" class="map__btn-zone btn-zone--glav">Главный корпус</a>
-            {# <a href="#" class="map__btn-zone btn-zone--kdc"></a> #}
-            {# <a href="#" class="map__btn-zone btn-zone--rod"></a> #}
-            <a href="{% url 'map:therap_building' %}" class="map__btn-zone btn-zone--terap">Терапевтический корпус</a>
-            {# <a href="#" class="map__btn-zone btn-zone--panatom"></a> #}
+            <div class="map__title">Выберите ваш корпус
+                <span class="map__title-min">(нажмите на подсказку над корпусом)</span>
+            </div>
+            <div class="map__img-wrapper">
+                <img class="map__img" src="{% static "img/map2.jpg" %}" alt="Интерактивная карта расположения корпусов больницы №15">
+                <a href="{% url 'map:main_building' %}" class="map__btn-zone btn-zone--glav">Главный корпус</a>
+                <a href="{% url 'map:therap_building' %}" class="map__btn-zone btn-zone--terap">Терапевтический корпус</a>
+                {# <a href="#" class="map__btn-zone btn-zone--kdc"></a> #}
+                {# <a href="#" class="map__btn-zone btn-zone--rod"></a> #}
+                {# <a href="#" class="map__btn-zone btn-zone--panatom"></a> #}
+            </div>
         </div>
     </div>
 

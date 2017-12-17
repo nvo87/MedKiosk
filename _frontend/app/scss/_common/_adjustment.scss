@@ -5,12 +5,12 @@ $body-font: 'Open Sans', sans-serif;  // базовый шрифт №1
 // $body-font: arial;  // базовый шрифт №1
 $font: 16px;
 $font-color-light: #f2ffff;  // цвет текста на темном
-$btn-color: #333399;        // фон кнопок
+// $btn-color: #333399;  // фиолет
 $main-wrapper-padding: 0 20px;  // маленький отступ от краев экрана
 $about-text-color: #333399;
 $alt-text-color: #099;
-$btn-color: #ff6a42;
-$alt-btn-color: #ff6a42;
+$btn-color: #ff6a42; //крупные кнопки
+$alt-btn-color: #ff6a42; //мелкие кнопки
 
 html {
 	width:100%;
@@ -21,7 +21,7 @@ html {
 
 body {
     line-height: 1.55;
-	font-size: $font;
+	font-size: 1rem;
 	font-family: $body-font;
     -webkit-font-smoothing: antialiased;
 	width:100%;
@@ -98,7 +98,7 @@ p {
     position: fixed;
     z-index:1000;
     top: 25px;
-    right: 2%;
+    right: 20px;
 }
 .nav-btns__btn{
     display: flex;
@@ -172,6 +172,23 @@ p {
         margin-right: 15px;
 
         .fa-arrow-right{
+            font-size: 60px;
+            color: $alt-btn-color;
+        }
+    }
+
+    &.list-btn{
+        top: 25px;
+        right: 25px;
+        @extend .big-nav-btn;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        color: #009999;
+        background-color: rgba(59, 76, 108, 0.51);
+        text-decoration: none;
+        margin-right: 15px;
+
+        .fa-bars{
             font-size: 60px;
             color: $alt-btn-color;
         }

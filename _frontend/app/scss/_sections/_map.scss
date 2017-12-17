@@ -1,12 +1,111 @@
+.map{
+    // width: 100%;
+    // @extend .center-in-flexbox;
+    @extend .about;
+}
+
+.map__wrapper{
+    // position: relative;
+    // display: inline-block;
+    // width: 100%;
+    @extend .about-info-wrapper;
+}
+
+.map__title{
+    @extend .about-title;
+    // text-align: center;
+    // color: $about-text-color;
+    // margin-bottom: 15px;
+
+    .map__title-min{
+        @extend .about-title--subline;
+        margin-bottom: 0;
+        // font-size: 65%;
+        // margin-top: -5px;
+        // display: block;
+        // margin-bottom: 5px;
+    }
+}
+
+.map__img{
+    @extend .img-responsive;
+    width: 100%;
+    display: block;
+}
+
+.map__img-wrapper{
+    border-radius:10px;
+    overflow:hidden;
+    position: relative;
+}
+
+
+.map__btn-zone{
+    position: absolute;
+    display: block;
+    // height: 9%; // 45px;
+    min-width: 50px;
+    background-color: $about-text-color;
+    padding: 15px;
+    border-radius:10px;
+    color: $font-color-light;
+    box-shadow: 0 0 10px 2px #777;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.btn-zone--glav{
+    top: 60%; //    top: 115px;
+    left: 55%; //   left: 100px;
+    // width: 23%; //   width: 200px;
+    border-radius: 25px 0px 25px 25px;
+}
+.btn-zone--kdc{
+    top: 5%;
+    left: 46%;
+    width: 42%;
+}
+.btn-zone--rod{
+    top: 68%;
+    left: 1%;
+    width: 23%;
+}
+.btn-zone--terap{
+    top: 30%;
+    left: 12%;
+    // width: 33%;
+    border-radius: 25px 0px 25px 25px;
+
+}
+.btn-zone--panatom{
+    top: 43%;
+    left: 45%;
+    width: 43%;
+}
+
+.floors{
+    @extend .about;
+}
+
+.floors__wrapper{
+    @extend .about-info-wrapper;
+}
+
+.floors__title{
+    @extend .about-title;
+}
 .floor-table{
     @extend .table;
     margin-bottom: 30px;
+    padding-top: 0;
 }
 .floor-table__wrapper{
     @extend .table__wrapper;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-
+}
+.floor-table__title{
+    @extend .about-title;
 }
 .floor-table__header{
     @extend .table__header;
@@ -65,10 +164,11 @@
 .floor-table__popup{
     display: none;
     font-size:1rem;
-    position: absolute;
+    position: fixed;
     width: 75%;
     left: 12.5%;
-    top: 0%;
+    top: 50%;
+    transform: translateY(-50%);
     // padding-bottom: 15px;
 }
 .floor-table__about{

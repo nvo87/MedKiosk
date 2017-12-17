@@ -1,0 +1,44 @@
+$zoom: 1.4;
+
+html.blind-mode{
+    font-size: $font * $zoom;
+}
+
+.blind-mode{
+    .header .container{
+        width: 80%;
+        max-width: 1080px;
+    }
+    .container {
+        width: 100%;
+        max-width: 1285px;
+        padding-right: 13px;
+    }
+    .main-content{
+        overflow-y:scroll;
+    }
+    .main-title{
+        font-size: 2.6rem / $zoom;
+    }
+    // .big-menu__btn{
+    //     width: 90%;
+    // }
+    .about-menu__btn:last-child{
+        margin-bottom: 15px !important;      
+    }
+    .nav-btns__text{
+        font-size: 2rem / $zoom;
+    }
+    .fa-low-vision:before{
+        content: "\f06e";
+    }
+    .home-btn .nav-btns__text{
+        font-size: 1.7rem / $zoom;
+    }
+    .narrow-cols .about-container, .middle-cols .about-container{
+        width: 65%;
+    }
+    .ui-keyboard{
+        font-size: $font;
+    }
+}

@@ -3,125 +3,239 @@
 
 {% block content %}
 
-    <div class="floor-table">
-        <div class="title">Выберите ваше отделение 
-            {# <span class="title-min">(нажмите на строку в таблице)</span> #}
-        </div>
-        <div class="floor-table__wrapper">
-            <table class="floor-table__table">
-                <tr class="floor-table__row">
-                    <th class="floor-table__header">Отделения</th>
-                    <th class="floor-table__header floor-table__header--stage">Этаж</th>
-                </tr>
-                <tr class="floor-table__row">
-                    <td class="floor-table__col">
-                        <a href="#" class="floor-table__link">
-                            <div class="col-content__col-name">Паллиативное Отделение<br> Терапевтическое Отделение</div>
-                            <div class="floor-table__col-content">
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Зав. отделения: </span>
-                                    <span class="col-content__value">Иванов Иван Иванович</span>
-                                </div>
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Часы посещения: </span>
-                                    <span class="col-content__value">с 10:00 до 18:00</span>
-                                </div>
+    <div class="map">
+        <div class="map__wrapper">
+            <div class="map__title">Выберите ваше отделение 
+                <span class="map__title-min">(нажмите на строку в таблице)</span>
+            </div>
+            <div class="floor-table">
+                <div class="floor-table__wrapper">
+                    <table class="floor-table__table">
+                        <tr class="floor-table__row">
+                            <th class="floor-table__header">Отделения</th>
+                            <th class="floor-table__header floor-table__header--stage">Этаж</th>
+                        </tr>
+                        <tr class="floor-table__row">
+                            <td class="floor-table__col">
+                                <a href="#" class="floor-table__link">
+                                    <div class="col-content__col-name">Паллиативное Отделение<br> Терапевтическое Отделение</div>
+                                    <div class="floor-table__col-content">
+                                        
+                                        <div class="floor-name">Цокольный этаж</div>
+                                        <div class="department-block">
+                                            <div class="department">МРТ, КТ (Отделение инструментальной диагностики)</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">к.м.н. врач ультразвуковой диагностики Дорошенко Дмитрий Александрович </span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Шалагина Любовь Дмитриевна</span>
+                                            </div>
+                                        </div>
+                                        <div class="department-block">
+                                            <div class="department">Отделение эндоскопии</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">д.м.н. врач-эндоскопист Глебов Константин Глебович</span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Семочкина Елена Васильевна</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="floor-table__col floor-table__col--stage">6</td>
+                        </tr>
+                        <tr class="floor-table__row">
+                            <td class="floor-table__col">
+                                <a href="#" class="floor-table__link">
+                                    <div class="col-content__col-name">Отделение Нефрологии<br> Отделение Ревматологии<br> Паллиативное Отделение</div>
+                                    <div class="floor-table__col-content">
+                                        
+                                        <div class="floor-name">Цокольный этаж</div>
+                                        <div class="department-block">
+                                            <div class="department">МРТ, КТ (Отделение инструментальной диагностики)</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">к.м.н. врач ультразвуковой диагностики Дорошенко Дмитрий Александрович </span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Шалагина Любовь Дмитриевна</span>
+                                            </div>
+                                        </div>
+                                        <div class="department-block">
+                                            <div class="department">Отделение эндоскопии</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">д.м.н. врач-эндоскопист Глебов Константин Глебович</span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Семочкина Елена Васильевна</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="floor-table__col floor-table__col--stage">5</td>
+                        </tr>
+                        <tr class="floor-table__row">
+                            <td class="floor-table__col">
+                                <a href="#" class="floor-table__link">
+                                    <div class="col-content__col-name">Неврологическое Отделение</div>
+                                    <div class="floor-table__col-content">
+                                        
+                                        <div class="floor-name">Цокольный этаж</div>
+                                        <div class="department-block">
+                                            <div class="department">МРТ, КТ (Отделение инструментальной диагностики)</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">к.м.н. врач ультразвуковой диагностики Дорошенко Дмитрий Александрович </span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Шалагина Любовь Дмитриевна</span>
+                                            </div>
+                                        </div>
+                                        <div class="department-block">
+                                            <div class="department">Отделение эндоскопии</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">д.м.н. врач-эндоскопист Глебов Константин Глебович</span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Семочкина Елена Васильевна</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="floor-table__col floor-table__col--stage">4</td>
+                        </tr>
+                        <tr class="floor-table__row">
+                            <td class="floor-table__col">
+                                <a href="#" class="floor-table__link">
+                                    <div class="col-content__col-name">Отделение гемодиализа Отделение<br> Переливания Крови</div>
+                                    <div class="floor-table__col-content">
+                                        
+                                        <div class="floor-name">Цокольный этаж</div>
+                                        <div class="department-block">
+                                            <div class="department">МРТ, КТ (Отделение инструментальной диагностики)</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">к.м.н. врач ультразвуковой диагностики Дорошенко Дмитрий Александрович </span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Шалагина Любовь Дмитриевна</span>
+                                            </div>
+                                        </div>
+                                        <div class="department-block">
+                                            <div class="department">Отделение эндоскопии</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">д.м.н. врач-эндоскопист Глебов Константин Глебович</span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Семочкина Елена Васильевна</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="floor-table__col floor-table__col--stage">3</td>
+                        </tr>
+                        <tr class="floor-table__row">
+                            <td class="floor-table__col">
+                                <a href="#" class="floor-table__link">
+                                    <div class="col-content__col-name">Неврологическое Отделение</div>
+                                    <div class="floor-table__col-content">
+                                        
+                                        <div class="floor-name">Цокольный этаж</div>
+                                        <div class="department-block">
+                                            <div class="department">МРТ, КТ (Отделение инструментальной диагностики)</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">к.м.н. врач ультразвуковой диагностики Дорошенко Дмитрий Александрович </span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Шалагина Любовь Дмитриевна</span>
+                                            </div>
+                                        </div>
+                                        <div class="department-block">
+                                            <div class="department">Отделение эндоскопии</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">д.м.н. врач-эндоскопист Глебов Константин Глебович</span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Семочкина Елена Васильевна</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="floor-table__col floor-table__col--stage">2</td>
+                        </tr>
+                        <tr class="floor-table__row">
+                            <td class="floor-table__col">
+                                <a href="#" class="floor-table__link">
+                                    <div class="col-content__col-name">АРО №1, АРО №5</div>
+                                    <div class="floor-table__col-content">
+                                        
+                                        <div class="floor-name">Цокольный этаж</div>
+                                        <div class="department-block">
+                                            <div class="department">МРТ, КТ (Отделение инструментальной диагностики)</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">к.м.н. врач ультразвуковой диагностики Дорошенко Дмитрий Александрович </span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Шалагина Любовь Дмитриевна</span>
+                                            </div>
+                                        </div>
+                                        <div class="department-block">
+                                            <div class="department">Отделение эндоскопии</div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Заведующий отделением:</span>
+                                                <span class="col-content__value">д.м.н. врач-эндоскопист Глебов Константин Глебович</span>
+                                            </div>
+                                            <div class="col-content__item">
+                                                <span class="col-content__key about-text--bold">Старшая медицинская сестра: </span>
+                                                <span class="col-content__value">Семочкина Елена Васильевна</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="floor-table__col floor-table__col--stage">1</td>
+                        </tr>
+                    </table>
+                    <div class="floor-table__popup" id="floorPopup">
+                        <div class="floor-table__about">
+                            <a href="#" class="popup-close-btn"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                            <div class="floor-table__about-wrapper" id="floorPopupContent">
+                    
                             </div>
-                        </a>
-                    </td>
-                    <td class="floor-table__col floor-table__col--stage">6</td>
-                </tr>
-                <tr class="floor-table__row">
-                    <td class="floor-table__col">
-                        <a href="#" class="floor-table__link">
-                            <div class="col-content__col-name">Отделение Нефрологии<br> Отделение Ревматологии<br> Паллиативное Отделение</div>
-                            <div class="floor-table__col-content">
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Зав. отделения: </span>
-                                    <span class="col-content__value">Иванов Иван Иванович</span>
-                                </div>
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Часы посещения: </span>
-                                    <span class="col-content__value">с 10:00 до 18:00</span>
-                                </div>
-                            </div>
-                        </a>
-                    </td>
-                    <td class="floor-table__col floor-table__col--stage">5</td>
-                </tr>
-                <tr class="floor-table__row">
-                    <td class="floor-table__col">
-                        <a href="#" class="floor-table__link">
-                            <div class="col-content__col-name">Неврологическое Отделение</div>
-                            <div class="floor-table__col-content">
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Зав. отделения: </span>
-                                    <span class="col-content__value">Иванов Иван Иванович</span>
-                                </div>
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Часы посещения: </span>
-                                    <span class="col-content__value">с 10:00 до 18:00</span>
-                                </div>
-                            </div>
-                        </a>
-                    </td>
-                    <td class="floor-table__col floor-table__col--stage">4</td>
-                </tr>
-                <tr class="floor-table__row">
-                    <td class="floor-table__col">
-                        <a href="#" class="floor-table__link">
-                            <div class="col-content__col-name">Отделение гемодиализа Отделение<br> Переливания Крови</div>
-                            <div class="floor-table__col-content">
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Зав. отделения: </span>
-                                    <span class="col-content__value">Иванов Иван Иванович</span>
-                                </div>
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Часы посещения: </span>
-                                    <span class="col-content__value">с 10:00 до 18:00</span>
-                                </div>
-                            </div>
-                        </a>
-                    </td>
-                    <td class="floor-table__col floor-table__col--stage">3</td>
-                </tr>
-                <tr class="floor-table__row">
-                    <td class="floor-table__col">
-                        <a href="#" class="floor-table__link">
-                            <div class="col-content__col-name">Неврологическое Отделение</div>
-                            <div class="floor-table__col-content">
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Зав. отделения: </span>
-                                    <span class="col-content__value">Иванов Иван Иванович</span>
-                                </div>
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Часы посещения: </span>
-                                    <span class="col-content__value">с 10:00 до 18:00</span>
-                                </div>
-                            </div>
-                        </a>
-                    </td>
-                    <td class="floor-table__col floor-table__col--stage">2</td>
-                </tr>
-                <tr class="floor-table__row">
-                    <td class="floor-table__col">
-                        <a href="#" class="floor-table__link">
-                            <div class="col-content__col-name">АРО №1, АРО №5</div>
-                            <div class="floor-table__col-content">
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Зав. отделения: </span>
-                                    <span class="col-content__value">Иванов Иван Иванович</span>
-                                </div>
-                                <div class="col-content__item">
-                                    <span class="col-content__key">Часы посещения: </span>
-                                    <span class="col-content__value">с 10:00 до 18:00</span>
-                                </div>
-                            </div>
-                        </a>
-                    </td>
-                    <td class="floor-table__col floor-table__col--stage">1</td>
-                </tr>
-            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

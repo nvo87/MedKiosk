@@ -13,6 +13,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+        <script src="{% static "/bower/jquery/dist/jquery.js" %}"></script>
+        <script src="{% static "/js/buttons.js" %}"></script>
         <link rel="stylesheet" href="{% static "/bower/jquery-ui/themes/base/jquery-ui.css" %}">
         <link rel="stylesheet" href="{% static "/bower/keyboard/dist/css/keyboard.min.css" %}">
         <link rel="stylesheet" href="{% static "/bower/components-font-awesome/css/font-awesome.min.css" %}">
@@ -73,6 +75,11 @@
 
             <div class="nav-btns">
             {% if request.get_full_path != "/" %} 
+                <a href="/" class="nav-btns__btn list-btn js-fade">
+                    <span class="nav-btns__text">
+                    <i class="fa fa-bars" aria-hidden="true"></i><br>
+                    к списку</span>
+                </a>
                 <a href="/" class="nav-btns__btn left-btn js-fade">
                     <span class="nav-btns__text">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i><br>
@@ -90,7 +97,7 @@
                 </a>
 
             {% endif %}
-                <a href="/" class="nav-btns__btn zoom-btn js-fade">
+                <a href="/" class="nav-btns__btn zoom-btn js-fade" id="blindBtn">
                     <span class="nav-btns__text">
                         <i class="fa fa-low-vision" aria-hidden="true"></i><br>
                     a&#8594;A</span>
@@ -107,7 +114,7 @@
         <!-- bower:js-->
 
         <!-- endbower  -->
-        <script src="{% static "/bower/jquery/dist/jquery.js" %}"></script>
+
         <script src="{% static "/bower/jquery-ui/jquery-ui.js" %}"></script>
         <script src="{% static "/bower/keyboard/dist/js/jquery.keyboard.js" %}"></script>
         {# // <script src="{% static "/bower/keyboard/layouts/keyboard-layouts-combined.js" %}"></script> #}
@@ -119,6 +126,7 @@
         {# // <script src="{% static "/bower/keyboard/layouts/keyboard-layouts-microsoft.js" %}"></script> #}
 
         <script src="{% static "/js/script.js" %}"></script>
+
         {# // <script src="{% static "/js/fadeinscreen.js" %}"></script> #}
     </body>
 </html>

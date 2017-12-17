@@ -19,81 +19,8 @@ $text-color: #333399;
 	border-radius: 15px;
 	margin-bottom: 45px;
 	@extend .custom-btn;
-	font-size: 2.2em;
+	font-size: 2.2rem;
 }
-
-.title{
-	font-size: 1.6em;
-	text-align: center;
-	color: $about-text-color;
-	margin-bottom: 15px;
-
-	.title-min{
-		font-size: 65%;
-		margin-top: -5px;
-		display: block;
-		margin-bottom: 5px;
-	}
-}
-.map{
-	width: 100%;
-	@extend .center-in-flexbox;
-}
-
-.map__wrapper{
-	position: relative;
-	display: inline-block;
-	width: 100%;
-}
-
-.map__img{
-	@extend .img-responsive;
-	width: 100%;
-}
-
-.map__btn-zone{
-	position: absolute;
-	display: block;
-	// height: 9%; // 45px;
-	min-width: 50px;
-	background-color: rgba(0,0,0,0.9);
-	padding: 15px;
-	border-radius:10px;
-	color: $font-color-light;
-	text-decoration: none;
-	font-size: 1.2rem;
-}
-
-.btn-zone--glav{
-	top: 60%; // 	top: 115px;
-	left: 55%; // 	left: 100px;
-	// width: 23%; // 	width: 200px;
-	border-radius: 25px 0px 25px 25px;
-}
-.btn-zone--kdc{
-	top: 5%;
-	left: 46%;
-	width: 42%;
-}
-.btn-zone--rod{
-	top: 68%;
-    left: 1%;
-    width: 23%;
-}
-.btn-zone--terap{
-	top: 30%;
-	left: 19%;
-	// width: 33%;
-	border-radius: 25px 0px 25px 25px;
-
-}
-.btn-zone--panatom{
-	top: 43%;
-    left: 45%;
-    width: 43%;
-}
-
-
 
 .table{
 	padding-top: 15px;
