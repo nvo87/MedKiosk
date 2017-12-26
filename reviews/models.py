@@ -56,6 +56,8 @@ class Patient(models.Model):
     age = models.PositiveSmallIntegerField(null=True, blank=True)
     # итоговый отзыв, который оставил пользователь
     review = models.TextField(default='-')
+    date_added = models.DateTimeField(
+        default=timezone.now)  # дата ответа
 
     def __str__(self):
         """ Возвращает строковое представление модели """

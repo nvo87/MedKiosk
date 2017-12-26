@@ -1,17 +1,28 @@
 var ChartModule = (function () {
     var $chartModuleBlock = $("#ChartModuleBlock");
+    var $chartTitleQuestion = $("#chartTitleQuestion");
     var $chartBlock = $("#StatsChart");
+    var $legendBlock = $("#chartLegend");
+    var legendTplScript = $("#legendTpl");
     var myChart;
     var RANGES, FADEIN_TIME;
     var defaultBackgroundColor= [
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 206, 86, 0.3)'
+                    'rgba(255, 206, 86, 0.3)',
+                    'rgba(25, 26, 186, 0.3)',
+                    'rgba(124, 180, 86, 0.3)',
+                    'rgba(12, 150, 186, 0.3)',
+                    'rgba(55, 206, 6, 0.3)'
                 ];
     var ActiveBackgroundColor= [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(25, 26, 186, 1)',
+                    'rgba(124, 180, 86, 1)',
+                    'rgba(12, 150, 186, 1)',
+                    'rgba(55, 206, 6, 1)'
                 ];
 
     function _init(SETTINGS) {
@@ -28,7 +39,7 @@ var ChartModule = (function () {
     }
 
     function _setUpListeners() {
-        $chartBlock.on('click', _showRangeAnswsersData);
+        // $chartBlock.on('click', _showRangeAnswsersData);
     }
 
     function _setChartParams(dataRanges) {
@@ -128,6 +139,7 @@ var ChartModule = (function () {
         var answersToQuestion = AnswersModule.filterAnswersByQuestionId(questionId);
         var answersInRange = AnswersModule.filterAnswersByRatingRange(range.min, range.max, answersToQuestion);
 
+
         AnswersModule.showAnswersData(answersInRange);
         AnswersModule.showStats(answersInRange);
         
@@ -147,7 +159,6 @@ var ChartModule = (function () {
         }
         var yMax = Math.max.apply(null, yArray);
 
-        console.log(answersArray);
         myChart.data.labels = xArray;
         myChart.data.datasets[0].data = yArray;
         myChart.options.scales.yAxes[0].ticks.max = +yMax + 1;
@@ -158,11 +169,45 @@ var ChartModule = (function () {
         $chartModuleBlock.fadeIn(FADEIN_TIME);
     }
 
+    function _hideChartModuleBlock(){
+        $chartModuleBlock.fadeOut(FADEIN_TIME);
+    }
+
+    function _generateHandlebarsTpl(handlebarsScriptId){
+        //вывод порядкового номера для ответа, начиная с 1
+        Handlebars.registerHelper("counter", function (index){
+            return index + 1;
+        });
+        // из скрипта вставленного в html создаем конечный шаблон
+        // replace(/[\u200B]/g, '') - это костыль, чтобы убрать текстовую ноду &#8203, которая генерируется первым элементом списка и из-за этого делает лишний отступ в верстке. см."ZERO WIDTH SPACE проблема"
+        var templateScript = handlebarsScriptId.html().replace(/[\u200B]/g, '');
+        return Handlebars.compile(templateScript);
+    }
+
+    function _renderHandlebarsTpl(dataObject, template, blockToRender){
+        // подставляем данные в конечный шаблон Handlebars
+        blockToRender.html('').append(template(dataObject));
+    }
+
+    function _showChartLegend(chartData){
+        var tpl = _generateHandlebarsTpl(legendTplScript);
+        _renderHandlebarsTpl(chartData, tpl, $legendBlock);
+    }
+
+    function _showChartTitleQuestion(text){
+        $chartTitleQuestion.html(text);
+        $chartTitleQuestion.addClass('chartTitle');
+    }
+
+
     return {
         init: _init,
         setDataSet: _setDataSet,
         update: _updateChart,
-        showChartModule: _showChartModuleBlock
+        showChartModule: _showChartModuleBlock,
+        hideChartModule: _hideChartModuleBlock,
+        showChartLegend: _showChartLegend,
+        showChartTitleQuestion: _showChartTitleQuestion
     }
 
 }());

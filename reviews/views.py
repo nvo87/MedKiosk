@@ -74,6 +74,9 @@ def success(request):
         else:
             patient = Patient()
 
+        patient.full_name = form['p_name']
+        patient.phone = form['p_phone']
+        patient.age = form['p_age']
         patient.review = form['p_review']
         patient.save()
 

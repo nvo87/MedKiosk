@@ -3,6 +3,7 @@ var AnswersModule = (function () {
     var $answersModuleBlock = $('#AnswersModuleBlock'); // весь модуль ответов целиком, с ответами, кнопками и т.д.
     var $reviewsBlock = $('#reviewsList'); // блок куда выводятся ответы
     var reviewsTplScript = $('#reviewsTpl'); // срипт шаблона для вывода ответов
+    var onlyReviewsTplScript = $('#onlyReviewsTpl'); // срипт шаблона для вывода ответов
     var $foldCommentsBlock = $('#foldingBlock'); // кнопки свернуть/развернуть все ответы
     var $foldBtns = $foldCommentsBlock.children('.folding-btn');
     var reviewsItemClass = '.reviews-item';
@@ -43,6 +44,10 @@ var AnswersModule = (function () {
 
         $this.toggleClass('active');
         $reviewContent.fadeToggle(FADEIN_TIME);
+    }
+
+    function _getAllAnswers(){
+        return ANSWERS;
     }
 
     function _filterByQuestionId(questionId, answers){
@@ -127,6 +132,12 @@ var AnswersModule = (function () {
         _renderHandlebarsTpl(answersData, tpl, $reviewsBlock);
     }
 
+    function _showReviewsOnly(){
+        var reviewsData = ReviewsModule.getAllReviews();
+        var tpl = _generateHandlebarsTpl(onlyReviewsTplScript);
+        _renderHandlebarsTpl(reviewsData, tpl, $reviewsBlock);
+    }
+
     function _showStats(answers){
         var averageAge = _getAverageAge(answers).toFixed(1);
         var averageRating = _getAverageRating(answers).toFixed(1);
@@ -161,11 +172,13 @@ var AnswersModule = (function () {
 
     return {
         init: _init,
+        getAllAnswers: _getAllAnswers,
         filterAnswersByQuestionId: _filterByQuestionId,
         filterAnswersByRatingRange: _filterByRatingRange,
         sortAnswersByOptions: _sortByOptions,
         sortRatingsByRanges: _sortRatingsByRanges,
         showAnswersData: _showAnswersData,
+        showReviewsOnly: _showReviewsOnly,
         showAnswersModule: _showAnswersModuleBlock,
         showStats: _showStats
     }

@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
 
         console.log(questionsJSON);
         console.log(answersJSON);
-        console.log(patientsJSON);
+        console.log(reviewsPatientsJSON);
         console.log(optionsJSON);
 
         ChartModule.init(SETTINGS);

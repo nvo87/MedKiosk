@@ -20,14 +20,14 @@
             <nav class="col-sm-3 col-md-3 d-none d-sm-block bg-light sidebar">
                 <div id="QuestionsModuleBlock">
                     <ul class="nav nav-pills flex-column question-list">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link all-reviews-link">Посмотреть только отзывы</a>
+                            </li>
                         {% for question in questions %}
                             <li class="nav-item question-item">
                                 <a class="nav-link question-link q-ml-{{question.nesting_level}}" href="#" data-id={{question.id}}>{{ question.text }}<span class="sr-only">(current)</span></a>
                             </li>
                         {% endfor %}
-                            <li class="nav-item">
-                                <a href="#" class="nav-link reviews-link">Все отзывы</a>
-                            </li>
                     </ul>
                 </div>
             </nav>
@@ -44,26 +44,33 @@
                     <section class="row placeholders">
                         <div class="col-12 col-sm-12">
                             <div id="ChartModuleBlock">
-                                <h2 class="text-center">График</h2>
+                                <h2 class="text-center" id="chartTitleQuestion">График</h2>
                                 <div class="row  align-items-center">
                                     <div class="col-8 col-sm-8 col-lg-6 placeholder">
                                             <div class="chart-wrapper">
                                                 <canvas id="StatsChart" class="chart"></canvas>
                                             </div>
                                     </div>
-                                    <div class="col-4 col-sm-4 col-lg-4 placeholder">
+                                    <div class="col-4 col-sm-4 col-lg-6 placeholder">
+
                                         <div class="chart-info-row">
-                                            <div class="chart-info-key">Всего ответивших:</div>
-                                            <div class="chart-info-value" id="answersAmount"></div>
+                                            <div class="chart-info-key">Варианты ответов:</div>
+                                            <div class="chart-info-value">
+                                                <ul class="legend-list list-group" id="chartLegend">
+                                                    <!-- Используем handlebars id="legendTpl" -->
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="chart-info-row">
-                                            <div class="chart-info-key">Средняя оценка:</div>
-                                            <div class="chart-info-value" id="averageRating"></div>
-                                        </div>
-                                    <!--                                     <div class="chart-info-row">
-                                        <div class="chart-info-key">Средний возраст ответивших:</div>
-                                        <div class="chart-info-value" id="averageAgeField"></div>
-                                    </div> -->
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-lg-12 placeholder">
+                                    <!--                                         <div class="chart-info-row">
+                                        <div class="chart-info-key">Средняя оценка:</div>
+                                        <div class="chart-info-value" id="averageRating"></div>
+                                    </div>  -->
+                                            <div class="chart-info-row">
+                                                <span class="chart-info-key">Всего ответивших:</span>
+                                                <span class="chart-info-value" id="answersAmount"></span>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +79,7 @@
                     <section class="row placeholders">
                         <div class="col-12 col-sm-12 placeholders">
                             <div id="AnswersModuleBlock">
-                                <h2 class="text-center">Оценки</h2>
+                                <h2 class="text-center">Ответившие</h2>
                                 <div class="reviews-wrapper">
                                     <div class="reviews-folding" id="foldingBlock">
                                         <a href="#" class="folding-btn active">Развернуть все</a>
@@ -89,6 +96,13 @@
     </div>
 </div>
 {% verbatim %}
+<script id="legendTpl" type="x-handlebars-template">​
+    {{#each this}}
+        <li class="list-group-item">
+            <span class="trackNumber">{{counter @index}}</span> - <span class="trackName">{{text}}</span>
+        </li>
+    {{/each}}
+</script>
 <script id="reviewsTpl" type="x-handlebars-template">​
     {{#each this}}
         <li class="reviews-item list-group-item">
@@ -110,6 +124,32 @@
                     <div class="review-content-row">
                         <span class="review-key">Телефон для связи:</span>
                         <span class="review-value">{{patient.phone}}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</script>
+<script id="onlyReviewsTpl" type="x-handlebars-template">​
+    {{#each this}}
+        <li class="reviews-item list-group-item">
+            <div class="reviews-item-inner">
+                <a href="#" class="review-title">
+                    <span class="review-title-name">{{@index}} - {{full_name}}</span>,
+                    <span class="review-title-age">{{age}} лет</span>
+                    <span class="review-title-date float-right">от {{dateFormat date_added format="Do MMMM YYYY, dd"}}</span>
+                </a>
+                <div class="review-content">
+                    <div class="review-content-row">
+
+                    </div>
+                    <div class="review-content-row">
+                        <span class="review-key">Телефон для связи:</span>
+                        <span class="review-value">{{phone}}</span>
+                    </div>
+                    <div class="review-content-row">
+                        <span class="review-key">Итоговый отзыв:</span>
+                        <span class="review-value">{{review}}</span>
                     </div>
                 </div>
             </div>

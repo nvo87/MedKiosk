@@ -4,6 +4,7 @@ var QuestionsModule = (function () {
     // привязка к элементам верстки блока с вопросами
     var $questionsModuleBlock = $('#QuestionsModuleBlock');
     var $questionLink = $('.question-link'); // кнопки с вопросом
+    var $onlyReviewsLink = $('.all-reviews-link'); // кнопки с вопросом
     var activeClass = 'active'; // название класса для подсветки активной кнопки
     var currentQuestionId = 0; // id вопроса по которому на данный момент показаны данные
     var FADEIN_TIME;
@@ -18,6 +19,7 @@ var QuestionsModule = (function () {
 
     function _setUpListeners() {
         $questionLink.on('click', _showQuestionData);
+        $onlyReviewsLink.on('click', _showReviewsOnly);
     }
 
     function _toggleActiveClass($el) {
@@ -34,6 +36,15 @@ var QuestionsModule = (function () {
                 return QUESTIONS[item]['text'];
             }
         }
+    }
+    function _showReviewsOnly(e){
+        e.preventDefault();
+        var $this = $(this);
+
+        ChartModule.hideChartModule();
+        AnswersModule.showAnswersModule();
+        AnswersModule.showReviewsOnly()
+        _toggleActiveClass($this);
     }
 
     function _showQuestionData(e) {
@@ -59,6 +70,8 @@ var QuestionsModule = (function () {
         answersGroupedByOptions = AnswersModule.sortAnswersByOptions(options, answers);
 
         ChartModule.setDataSet(answersGroupedByOptions);
+        ChartModule.showChartLegend(options);
+        ChartModule.showChartTitleQuestion($this.html());
    
 /* 
 -----------------------------------------------------------------     

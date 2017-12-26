@@ -31,14 +31,15 @@ def csv_export(request):
     wb = xlwt.Workbook(encoding='utf-8')
     sheet1 = wb.add_sheet('Все ответы и комментарии')
 
-    columns = ['Вопрос', 'Оценка', 'Комментарий', 'Пациент', 'Возраст', 'Отзыв']
+    columns = ['Пациент', '# опроса', 'Вопрос', 'Ответ',  'Возраст', 'Отзыв']
     
     sheet1.col(0).width = 256*35    # 20 characters wide (-ish)
     sheet1.col(1).width = 256*12    
-    sheet1.col(2).width = 256*30
-    sheet1.col(3).width = 256*25    
+    sheet1.col(2).width = 256*55
+    sheet1.col(3).width = 256*35    
     sheet1.col(4).width = 256*12    
     sheet1.col(5).width = 256*50    
+    sheet1.col(6).width = 256*12    
 
     sheet1.panes_frozen = True
     sheet1.remove_splits = True
@@ -62,12 +63,21 @@ def csv_export(request):
     # Основные данные
     style = xlwt.XFStyle()
 
-    rows = Answer.objects.order_by('question', 'rating').values_list('question__text', 'rating', 'comment', 'patient__full_name', 'patient__age', 'patient__review')
+    rows = Answer.objects.order_by('patient__id','question').values_list('patient__full_name', 'patient__id', 'question__text', 'option__text', 'patient__age', 'patient__review')
 
+    last_patient = rows[0][1]
+    print(last_patient)
     for row in rows:
         row_num += 1
-        for col_num in range(len(row)):
-            sheet1.write(row_num, col_num, row[col_num], style)
+        cur_patient = row[1]
+        if (cur_patient == last_patient):
+            for col_num in range(len(row)):
+                sheet1.write(row_num, col_num, row[col_num], style)
+        else:
+            for col_num in range(len(row)):
+                sheet1.write(row_num, col_num, '', style)
+
+        last_patient = cur_patient
 
     wb.save(response)
     return response
