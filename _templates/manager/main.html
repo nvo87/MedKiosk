@@ -25,6 +25,9 @@
                                 <a class="nav-link question-link q-ml-{{question.nesting_level}}" href="#" data-id={{question.id}}>{{ question.text }}<span class="sr-only">(current)</span></a>
                             </li>
                         {% endfor %}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link reviews-link">Все отзывы</a>
+                            </li>
                     </ul>
                 </div>
             </nav>
@@ -99,8 +102,6 @@
                 <div class="review-content">
                     <div class="review-content-row">
 
-                        <span class="review-key">Комментарий к вопросу:</span>
-                        <span class="review-value">{{comment}}</span>
                     </div>
                     <div class="review-content-row">
                         <span class="review-key">Итоговый отзыв:</span>

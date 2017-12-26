@@ -130,7 +130,11 @@
     @extend .table__link;
     text-decoration: none;
 }
-
+.floor-table__link--no-content{
+    @extend .floor-table__link;
+    font-style: italic;
+    font-size: 1rem;
+}
 
 .floor-table__col--stage{
     width: 10%;
@@ -165,6 +169,7 @@
     display: none;
     font-size:1rem;
     position: fixed;
+    z-index: 10000;
     width: 75%;
     left: 12.5%;
     top: 50%;

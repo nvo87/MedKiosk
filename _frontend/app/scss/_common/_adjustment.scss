@@ -11,6 +11,8 @@ $about-text-color: #333399;
 $alt-text-color: #099;
 $btn-color: #ff6a42; //крупные кнопки
 $alt-btn-color: #ff6a42; //мелкие кнопки
+$btn-color: #333399; //крупные кнопки
+$alt-btn-color: #ff6a42; //мелкие кнопки
 
 html {
 	width:100%;
@@ -111,6 +113,9 @@ p {
 
     &:last-child{
         margin-right:0;
+    }
+    &:hover{
+        background-color:#eee !important;
     }
     
     &.zoom-btn{

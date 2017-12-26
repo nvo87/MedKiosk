@@ -81,6 +81,13 @@ class PatientList(APIView):
         return Response(serializer.data)
 
 
+class PatientWithReviewList(APIView):
+
+    def get(self, request):
+        patients = Patient.objects.exclude(review='-')
+        serializer = PatientSerializer(patients, many=True)
+        return Response(serializer.data)
+
 class OptionList(APIView):
 
     def get(self, request):

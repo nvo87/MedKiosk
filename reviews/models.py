@@ -8,7 +8,8 @@ from django.utils import timezone
 class Question(models.Model):
     """ Вопросы, которые задаются пользователю"""
     # текст вопроса и каким по счету выводится этот вопрос
-    text = models.CharField(max_length=300)
+    text = models.TextField()
+    #порядок вывода вопросов, 0 - стартовый вопрос
     sort_order = models.PositiveSmallIntegerField(null=True, blank=True)
     # уровень вложенности вопроса. 0 - корневые вопросы
     nesting_level = models.PositiveSmallIntegerField(default=0)
@@ -20,6 +21,7 @@ class Question(models.Model):
     class Meta:
         verbose_name = "Вопрос"
         verbose_name_plural = "Вопросы"
+        ordering = ['sort_order']
 
 
 class Option(models.Model):

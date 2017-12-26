@@ -20,8 +20,9 @@
     height: 30vh;
 }
 .ui-keyboard-button{
-	height: 3.7em;
+	height: 3.8em;
 	min-width: 4.2em;
+    margin:0.2em;
 }
 .ui-keyboard-space{
 	width: 30em;
@@ -35,6 +36,9 @@
     margin: 45px 0 30px;
     width: 90%;
     background-color: $alt-btn-color !important;
+}
+.ui-keyboard-text{
+    font-size: 1.5em
 }
 /* ---------------- */
 
@@ -90,8 +94,8 @@ height:0px
 
 ::-webkit-scrollbar-thumb { 
 -webkit-border-radius: 5px; 
-border-radius: 5px; 
-background-color:rgba(60, 76, 87, 0.35);
+border-radius: 15px; 
+background-color:rgba(130, 137, 134, 0.9);
 box-shadow:0px 1px 1px #fff inset; 
 background-position:center; 
 background-repeat:no-repeat; 
@@ -105,5 +109,5 @@ height:0px
 } 
 
 ::-webkit-scrollbar{ 
-width: 7px; 
+width: 30px; 
 }

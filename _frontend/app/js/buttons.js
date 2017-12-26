@@ -8,13 +8,28 @@ jQuery(document).ready(function($) {
     var $rightBtn = $('.right-btn');
     var $leftBtn = $('.left-btn');
 
+    if (getCookie(blindCookieName)) {
+        $('html').addClass(blindClass); 
+        blindFlag = true;
+    } else {
+        blindFlag = false;
+    }
+
     if (
       window.location.pathname === '/about/' ||
       window.location.pathname === '/map/' ||
-      window.location.pathname === '/reviews/' 
+      window.location.pathname === '/reviews/' ||
+      window.location.pathname === '/reviews/poll/' ||
+      window.location.pathname === '/reviews/success/'
       ) {
         $listBtn.addClass('js-hidden');
         $rightBtn.addClass('js-hidden');
+    }
+
+    if (
+      window.location.pathname === '/reviews/success/'
+      ) {
+        $leftBtn.addClass('js-hidden');
     }
 
     $rightBtn.on('click', function(event) {
@@ -48,7 +63,7 @@ jQuery(document).ready(function($) {
           }
           var domen = window.location.host;
           url = 'http://' + domen + pathname;
-          window.location.replace(url);
+          window.location.href = url;
         }
       }
       for (var i=0; i < urlsMap.length; i++) {
@@ -60,7 +75,7 @@ jQuery(document).ready(function($) {
           }
           var domen = window.location.host;
           var url = 'http://' + domen + pathname;
-          window.location.replace(url);
+          window.location.href = url;
         }
       }
     });
@@ -76,12 +91,7 @@ jQuery(document).ready(function($) {
       window.location.replace(url);
     });
 
-    if (getCookie(blindCookieName)) {
-        $('html').addClass(blindClass); 
-        blindFlag = true;
-    } else {
-        blindFlag = false;
-    }
+
 
     $blindBtn.on('click', function(event) {
         event.preventDefault();
@@ -92,6 +102,7 @@ jQuery(document).ready(function($) {
             blindFlag = true;
         } else {
             blindFlag = false;
+            console.log('delete');
             deleteCookie(blindCookieName);
         }
     }); 
@@ -145,7 +156,8 @@ function setCookie(name, value, options) {
 }
 
 function deleteCookie(name) {
-  setCookie(name, "", {
-    expires: -1
+  setCookie(name, null, {
+    expires: -1,
+    path: "/"
   })
 }
