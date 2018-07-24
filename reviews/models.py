@@ -9,7 +9,7 @@ class Question(models.Model):
     """ Вопросы, которые задаются пользователю"""
     # текст вопроса и каким по счету выводится этот вопрос
     text = models.TextField()
-    #порядок вывода вопросов, 0 - стартовый вопрос
+    # порядок вывода вопросов, 0 - стартовый вопрос
     sort_order = models.PositiveSmallIntegerField(null=True, blank=True)
     # уровень вложенности вопроса. 0 - корневые вопросы
     nesting_level = models.PositiveSmallIntegerField(default=0)
@@ -31,13 +31,13 @@ class Option(models.Model):
     # id следующего вопроса, если выбран данный ответ
     next_question = models.ForeignKey(
         Question,
-        #в базе может хранится null
+        # в базе может хранится null
         null=True,
-        #поле в формах и в админке может оставаться пустым
+        # поле в формах и в админке может оставаться пустым
         blank=True,
-        #поведение объекта этой таблицы, когда объект в связанной модели удалят. SET_NULL - выставить в ноль
+        # поведение объекта этой таблицы, когда объект в связанной модели удалят. SET_NULL - выставить в ноль
         on_delete=models.SET_NULL,
-        #имя связи, нужно так как используем несколько ForeignKey и будет заменять связь FOO_set
+        # имя связи, нужно так как используем несколько ForeignKey и будет заменять связь FOO_set
         related_name='parent_options'
         )
 
