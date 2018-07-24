@@ -6,14 +6,12 @@ from reviews.models import Answer, Patient, Question, Option
 
 class AnswerModelAdmin(admin.ModelAdmin):
     """отображение модели в админке"""
-    list_display = ["question", "rating", "comment", "patient",
+    list_display = ["question", "patient",
                     "date_added"]  # какие колонки будут в админке для данной модели
     # на каких колонках будут ссылки
-    list_display_links = ["rating", "date_added"]
+    list_display_links = ["date_added"]
     # какие колонки доступны для сортировки
-    list_filter = ["question", "rating", "patient"]
-    search_fields = ["rating", "comment"]  # по каким параметрам будет поиск
-    # list_editable = ["comment"] # сделать значения быстро-редактируемыми
+    list_filter = ["question", "patient"]
 
     class Meta:
         model = Answer

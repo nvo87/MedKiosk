@@ -1,5 +1,3 @@
-#TODO убрать лишние колонки из БД, от старой версии анкетирования.
-
 from django.db import models
 from django.utils import timezone
 
@@ -80,13 +78,6 @@ class Answer(models.Model):
         null=True,
         blank=True
         )
-    # варианты ответов (шкала от 1 до 10)
-    rating_choices = [(i, i) for i in range(1, 11)]
-    # оценка от 1 до 10, которую поставил пациент
-    rating = models.PositiveSmallIntegerField(
-        choices=rating_choices, default=5)
-    # комментарий к оценке на вопрос
-    comment = models.TextField()
     date_added = models.DateTimeField(
         default=timezone.now)  # дата ответа
 
